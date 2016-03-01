@@ -22,7 +22,7 @@ namespace AdventureWorks.Business.Data
 
             //Command
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM SalesLT.customer";
+            cmd.CommandText = "SELECT * FROM SalesLT.Customer";
 
             //Data Reader
             try

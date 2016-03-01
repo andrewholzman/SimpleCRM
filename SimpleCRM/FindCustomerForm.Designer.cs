@@ -59,6 +59,7 @@
             this.btnFindCustomer.TabIndex = 2;
             this.btnFindCustomer.Text = "Find";
             this.btnFindCustomer.UseVisualStyleBackColor = true;
+            this.btnFindCustomer.Click += new System.EventHandler(this.btnFindCustomer_Click);
             // 
             // dgvCustomerInfo
             // 

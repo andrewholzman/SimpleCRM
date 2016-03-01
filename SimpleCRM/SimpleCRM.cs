@@ -23,5 +23,10 @@ namespace SimpleCRM
             FindCustomerForm findCustomerForm = new FindCustomerForm();
             DialogResult dr = findCustomerForm.ShowDialog();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
