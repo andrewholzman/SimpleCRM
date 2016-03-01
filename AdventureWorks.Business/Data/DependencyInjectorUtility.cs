@@ -9,7 +9,7 @@ namespace AdventureWorks.Business.Data
 {
     public static class DependencyInjectorUtility
     {
-        public static List<Customer> GetCustomer()
+        public static IGetCustomerInfo GetCustomerInfo()
         {
             return new CustomerUtility();
         }

@@ -18,7 +18,7 @@ namespace AdventureWorks.Business.Data
             SqlConnection conn = new SqlConnection();
 
             //Connection String
-            conn.ConnectionString = "Server=(local);Database=AdventureWorks2012LT;Trusted_Connection=True;";
+            conn.ConnectionString = "Server=ANDYHOLZMAN;Database=AdventureWorks2012LT;Trusted_Connection=True;";
 
             //Command
             SqlCommand cmd = conn.CreateCommand();

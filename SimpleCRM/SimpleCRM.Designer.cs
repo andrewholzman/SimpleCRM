@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mstrpMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,24 +41,22 @@
             this.newSalesOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findSalesOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.mstrpMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // mstrpMain
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mstrpMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.toolStripMenuItem1,
             this.productsToolStripMenuItem,
             this.salesOrdersToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(522, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mstrpMain.Location = new System.Drawing.Point(0, 0);
+            this.mstrpMain.Name = "mstrpMain";
+            this.mstrpMain.Size = new System.Drawing.Size(511, 24);
+            this.mstrpMain.TabIndex = 2;
+            this.mstrpMain.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -71,7 +69,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             // 
             // toolStripMenuItem1
@@ -94,6 +92,7 @@
             this.findCustomerToolStripMenuItem.Name = "findCustomerToolStripMenuItem";
             this.findCustomerToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.findCustomerToolStripMenuItem.Text = "Find Customer";
+            this.findCustomerToolStripMenuItem.Click += new System.EventHandler(this.findCustomerToolStripMenuItem_Click);
             // 
             // productsToolStripMenuItem
             // 
@@ -107,13 +106,13 @@
             // newProuductToolStripMenuItem
             // 
             this.newProuductToolStripMenuItem.Name = "newProuductToolStripMenuItem";
-            this.newProuductToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newProuductToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.newProuductToolStripMenuItem.Text = "New Prouduct";
             // 
             // findProductToolStripMenuItem
             // 
             this.findProductToolStripMenuItem.Name = "findProductToolStripMenuItem";
-            this.findProductToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.findProductToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.findProductToolStripMenuItem.Text = "Find Product";
             // 
             // salesOrdersToolStripMenuItem
@@ -143,31 +142,16 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 28);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(498, 173);
-            this.dataGridView1.TabIndex = 1;
-            // 
             // SimpleCRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(522, 212);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.ClientSize = new System.Drawing.Size(511, 244);
+            this.Controls.Add(this.mstrpMain);
             this.Name = "SimpleCRM";
             this.Text = "SimpleCRM";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.mstrpMain.ResumeLayout(false);
+            this.mstrpMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,7 +159,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mstrpMain;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
@@ -188,6 +172,5 @@
         private System.Windows.Forms.ToolStripMenuItem newSalesOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findSalesOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
