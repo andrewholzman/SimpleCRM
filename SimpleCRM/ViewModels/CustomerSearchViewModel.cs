@@ -20,7 +20,7 @@ namespace SimpleCRM.ViewModels
             Suffix = cust.Suffix;
             CompanyName = cust.CompanyName;
             SalesPerson = cust.SalesPerson;
-            Email = cust.Email;
+            EmailAddress = cust.EmailAddress;
             Phone = cust.Phone;
             PasswordHash = cust.PasswordHash;
             PasswordSalt = cust.PasswordSalt;
@@ -30,7 +30,7 @@ namespace SimpleCRM.ViewModels
     
 
         public int CustomerID { get; set; }
-        public byte NameStyle { get; set; }
+        public bool NameStyle { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -38,7 +38,7 @@ namespace SimpleCRM.ViewModels
         public string Suffix { get; set; }
         public string CompanyName { get; set; }
         public string SalesPerson { get; set; }
-        public string Email { get; set; }
+        public string EmailAddress { get; set; }
         public string Phone { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }

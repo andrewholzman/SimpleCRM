@@ -70,24 +70,48 @@ namespace AdventureWorks.Business.Data
 
         private static Customer BuildCustomer(SqlDataReader reader)
         {
-            return new Customer
+            Customer customerDTO = new Customer
             {
                 CustomerID = (int)reader["CustomerID"],
-                NameStyle = (byte)reader["NameStyle"],
-                Title = (string)reader["Title"],
+                NameStyle = (bool)reader["NameStyle"],
                 FirstName = (string)reader["FirstName"],
-                MiddleName = (string)reader["MiddleName"],
                 LastName = (string)reader["LastName"],
-                Suffix = (string)reader["Suffix"],
-                CompanyName = (string)reader["CompanyName"],
-                SalesPerson = (string)reader["SalesPerson"],
-                Email = (string)reader["EmailAddress"],
-                Phone = (string)reader["Phone"],
                 PasswordHash = (string)reader["PasswordHash"],
                 PasswordSalt = (string)reader["PasswordSalt"],
                 RowGuid = (Guid)reader["rowguid"],
                 ModifiedDate = (DateTime)reader["ModifiedDate"]
             };
+
+            if (!(reader["Title"] is System.DBNull))
+            {
+                customerDTO.Title = (string)reader["Title"];
+            }
+            if (!(reader["MiddleName"] is System.DBNull))
+            {
+                customerDTO.MiddleName = (string)reader["MiddleName"];
+            }
+            if (!(reader["Suffix"] is System.DBNull))
+            {
+                customerDTO.Suffix = (string)reader["Suffix"];
+            }
+            if (!(reader["CompanyName"] is System.DBNull))
+            {
+                customerDTO.CompanyName = (string)reader["CompanyName"];
+            }
+            if (!(reader["SalesPerson"] is System.DBNull))
+            {
+                customerDTO.SalesPerson = (string)reader["SalesPerson"];
+            }
+            if (!(reader["EmailAddress"] is System.DBNull))
+            {
+                customerDTO.EmailAddress = (string)reader["EmailAddress"];
+            }
+            if (!(reader["Phone"] is System.DBNull))
+            {
+                customerDTO.Phone = (string)reader["Phone"];
+            }
+          
+            return customerDTO;
         }
     }
 }
