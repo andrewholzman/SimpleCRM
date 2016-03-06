@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,21 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FindCustomerForm.cs">
+    <Compile Include="Forms\FindCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FindCustomerForm.Designer.cs">
+    <Compile Include="Forms\FindCustomerForm.Designer.cs">
       <DependentUpon>FindCustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleCRM.cs">
+    <Compile Include="Forms\SimpleCRM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SimpleCRM.Designer.cs">
+    <Compile Include="Forms\SimpleCRM.Designer.cs">
       <DependentUpon>SimpleCRM.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FindCustomerForm.resx">
+    <Compile Include="ViewModels\CustomerSearchViewModel.cs" />
+    <EmbeddedResource Include="Forms\FindCustomerForm.resx">
       <DependentUpon>FindCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -72,7 +74,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SimpleCRM.resx">
+    <EmbeddedResource Include="Forms\SimpleCRM.resx">
       <DependentUpon>SimpleCRM.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

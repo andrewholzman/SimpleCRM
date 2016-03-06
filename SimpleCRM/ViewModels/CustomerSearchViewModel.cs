@@ -1,13 +1,34 @@
-﻿using System;
+﻿using AdventureWorks.Business.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventureWorks.Business.Models
+namespace SimpleCRM.ViewModels
 {
-    public class Customer
+    class CustomerSearchViewModel
     {
+        public CustomerSearchViewModel(Customer cust)
+        {
+            CustomerID = cust.CustomerID;
+            NameStyle = cust.NameStyle;
+            Title = cust.Title;
+            FirstName = cust.FirstName;
+            MiddleName = cust.MiddleName;
+            LastName = cust.LastName;
+            Suffix = cust.Suffix;
+            CompanyName = cust.CompanyName;
+            SalesPerson = cust.SalesPerson;
+            Email = cust.Email;
+            Phone = cust.Phone;
+            PasswordHash = cust.PasswordHash;
+            PasswordSalt = cust.PasswordSalt;
+            RowGuid = cust.RowGuid;
+            ModifiedDate = cust.ModifiedDate;
+        }
+    
+
         public int CustomerID { get; set; }
         public byte NameStyle { get; set; }
         public string Title { get; set; }
@@ -24,6 +45,4 @@ namespace AdventureWorks.Business.Models
         public Guid RowGuid { get; set; }
         public DateTime ModifiedDate { get; set; }
     }
-
-    
 }

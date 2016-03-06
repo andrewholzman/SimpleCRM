@@ -9,6 +9,6 @@ namespace AdventureWorks.Business.Data
 {
     public interface IGetCustomerInfo
     {
-        List<Customer> GetCustomer();
+        List<Customer> SearchCustomer(string query);
     }
 }
