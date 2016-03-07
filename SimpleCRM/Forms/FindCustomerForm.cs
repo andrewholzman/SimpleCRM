@@ -47,6 +47,7 @@ namespace SimpleCRM
             if (e.KeyCode == Keys.Enter)
             {
                 btnFindCustomer_Click(sender, e);
+
             }
         }
     }
