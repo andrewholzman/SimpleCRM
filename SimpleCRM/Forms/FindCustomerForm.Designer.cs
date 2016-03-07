@@ -47,18 +47,22 @@
             // 
             // txtSearch
             // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(64, 11);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(162, 20);
+            this.txtSearch.Size = new System.Drawing.Size(459, 20);
             this.txtSearch.TabIndex = 1;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // btnFindCustomer
             // 
-            this.btnFindCustomer.Location = new System.Drawing.Point(230, 11);
+            this.btnFindCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFindCustomer.Location = new System.Drawing.Point(527, 7);
             this.btnFindCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFindCustomer.Name = "btnFindCustomer";
-            this.btnFindCustomer.Size = new System.Drawing.Size(66, 26);
+            this.btnFindCustomer.Size = new System.Drawing.Size(63, 26);
             this.btnFindCustomer.TabIndex = 2;
             this.btnFindCustomer.Text = "Find";
             this.btnFindCustomer.UseVisualStyleBackColor = true;
@@ -74,14 +78,14 @@
             this.dgvCustomerInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvCustomerInfo.Name = "dgvCustomerInfo";
             this.dgvCustomerInfo.RowTemplate.Height = 24;
-            this.dgvCustomerInfo.Size = new System.Drawing.Size(287, 163);
+            this.dgvCustomerInfo.Size = new System.Drawing.Size(581, 168);
             this.dgvCustomerInfo.TabIndex = 3;
             // 
             // FindCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 214);
+            this.ClientSize = new System.Drawing.Size(599, 219);
             this.Controls.Add(this.dgvCustomerInfo);
             this.Controls.Add(this.btnFindCustomer);
             this.Controls.Add(this.txtSearch);
