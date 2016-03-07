@@ -10,5 +10,7 @@ namespace AdventureWorks.Business.Data
     public interface IGetCustomerInfo
     {
         List<Customer> SearchCustomer(string query);
+        Customer GetCustomer(int Id);
+        Address GetAddress(int customerID);
     }
 }

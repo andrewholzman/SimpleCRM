@@ -56,6 +56,70 @@ namespace AdventureWorks.Business.Data
             return colCustomer;
         }
 
+        public Customer GetCustomer(int customerID)
+        {
+            Customer customerToReturn = null;
+
+            SqlCommand cmd = GetDbCommand();
+            cmd.CommandText = "SELECT * FROM SalesLT.Customer WHERE CustomerId = @Id";
+            cmd.Parameters.AddWithValue("@Id", customerID);
+
+            try
+            {
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+
+                if (reader.Read())
+                {
+                    customerToReturn = BuildCustomer(reader);
+                }
+                reader.Close();
+
+            }
+
+            catch(Exception ex)
+            {
+                throw;
+            }
+
+
+            return customerToReturn;
+        }
+
+        public Address GetAddress(int customerID)
+        {
+            Address addressToReturn = null;
+
+            SqlCommand cmd = GetDbCommand();
+            cmd.CommandText = @"
+            SELECT *
+            FROM SalesLT.Address 
+            INNER JOIN SalesLT.CustomerAddress
+            ON Address.AddressID=CustomerAddress.AddressID
+            WHERE SalesLT.CustomerAddress.CustomerID = @customerID
+            ";
+            cmd.Parameters.AddWithValue("@customerID", customerID);
+
+            try
+            {
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+
+                if (reader.Read())
+                {
+                    addressToReturn = BuildAddress(reader);
+                }
+                reader.Close();
+            }
+
+            catch(Exception ex)
+            {
+                throw;
+            }
+
+            return addressToReturn;
+        }
+
         private SqlCommand GetDbCommand()
         {
             //Set up database connection
@@ -113,5 +177,42 @@ namespace AdventureWorks.Business.Data
           
             return customerDTO;
         }
+
+        private static Address BuildAddress(SqlDataReader reader)
+        {
+            Address AddressDTO = new Address
+            {
+                RowGuid = (Guid)reader["RowGuid"],
+                ModifiedDate = (DateTime)reader["ModifiedDate"]
+            };
+
+            if (!(reader["AddressLine1"] is System.DBNull))
+            {
+                AddressDTO.AddressLine1 = (string)reader["AddressLine1"];
+            }
+            if (!(reader["AddressLine2"] is System.DBNull))
+            {
+                AddressDTO.AddressLine2 = (string)reader["AddressLine2"];
+            }
+            if (!(reader["City"] is System.DBNull))
+            {
+                AddressDTO.City = (string)reader["City"];
+            }
+            if (!(reader["StateProvince"] is System.DBNull))
+            {
+                AddressDTO.StateProvince = (string)reader["StateProvince"];
+            }
+            if (!(reader["CountryRegion"] is System.DBNull))
+            {
+                AddressDTO.CountryRegion = (string)reader["CountryRegion"];
+            }
+            if (!(reader["PostalCode"] is System.DBNull))
+            {
+                AddressDTO.PostalCode = (string)reader["PostalCode"];
+            }
+
+            return AddressDTO;
+        }
+        
     }
 }

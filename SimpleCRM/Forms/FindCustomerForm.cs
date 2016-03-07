@@ -1,5 +1,6 @@
 ﻿using AdventureWorks.Business.Data;
 using AdventureWorks.Business.Models;
+using SimpleCRM.Forms;
 using SimpleCRM.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,23 @@ namespace SimpleCRM
                 btnFindCustomer_Click(sender, e);
 
             }
+        }
+
+        private void dgvCustomerInfo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CustomerSearchViewModel customerVM = null;
+            if (dgvCustomerInfo.SelectedRows.Count > 0)
+            {
+                customerVM = (CustomerSearchViewModel)dgvCustomerInfo.SelectedRows[0].DataBoundItem;
+            }
+
+            if (customerVM == null) 
+            {
+                    return;
+            }
+            ViewCustomerInfoForm customerInfoForm = new ViewCustomerInfoForm(customerVM.CustomerID);
+            customerInfoForm.ShowDialog();
+            btnFindCustomer_Click(sender, e);
         }
     }
 }

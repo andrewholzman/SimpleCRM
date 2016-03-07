@@ -50,7 +50,7 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(64, 11);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(459, 20);
             this.txtSearch.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             this.btnFindCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFindCustomer.Location = new System.Drawing.Point(527, 7);
-            this.btnFindCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFindCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.btnFindCustomer.Name = "btnFindCustomer";
             this.btnFindCustomer.Size = new System.Drawing.Size(63, 26);
             this.btnFindCustomer.TabIndex = 2;
@@ -75,11 +75,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCustomerInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomerInfo.Location = new System.Drawing.Point(9, 41);
-            this.dgvCustomerInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvCustomerInfo.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCustomerInfo.Name = "dgvCustomerInfo";
             this.dgvCustomerInfo.RowTemplate.Height = 24;
             this.dgvCustomerInfo.Size = new System.Drawing.Size(581, 168);
             this.dgvCustomerInfo.TabIndex = 3;
+            this.dgvCustomerInfo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerInfo_CellDoubleClick);
             // 
             // FindCustomerForm
             // 
@@ -90,7 +91,7 @@
             this.Controls.Add(this.btnFindCustomer);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FindCustomerForm";
             this.Text = "FindCustomerForm";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerInfo)).EndInit();
