@@ -344,7 +344,7 @@
             // 
             // txtPostalCode
             // 
-            this.txtPostalCode.Location = new System.Drawing.Point(330, 109);
+            this.txtPostalCode.Location = new System.Drawing.Point(331, 109);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(174, 20);
             this.txtPostalCode.TabIndex = 11;

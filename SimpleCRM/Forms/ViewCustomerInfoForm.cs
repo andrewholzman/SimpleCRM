@@ -42,12 +42,15 @@ namespace SimpleCRM.Forms
 
             address = customerInfoUtil.GetAddress(customerID);
 
-            txtLine1.Text = address.AddressLine1;
-            txtLine2.Text = address.AddressLine2;
-            txtCity.Text = address.City;
-            txtStateProvince.Text = address.StateProvince;
-            txtCountryRegion.Text = address.CountryRegion;
-            txtPostalCode.Text = address.PostalCode;
+            if (!(address == null))
+            {
+                txtLine1.Text = address.AddressLine1;
+                txtLine2.Text = address.AddressLine2;
+                txtCity.Text = address.City;
+                txtStateProvince.Text = address.StateProvince;
+                txtCountryRegion.Text = address.CountryRegion;
+                txtPostalCode.Text = address.PostalCode;
+            }
 
         }
     }

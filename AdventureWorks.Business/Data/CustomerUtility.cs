@@ -16,6 +16,9 @@ namespace AdventureWorks.Business.Data
         {
             //Variable
             List<Customer> colCustomer = new List<Customer>();
+            int x;
+            if (Int32.TryParse(query, out x)) { };
+           
 
             //Connection
             SqlCommand cmd = GetDbCommand();
@@ -24,11 +27,12 @@ namespace AdventureWorks.Business.Data
                 SELECT *
                 FROM SalesLT.Customer
                 WHERE FirstName LIKE '%' + @query + '%' OR
-                LastName LIKE '%' + @query + '%'
+                LastName LIKE '%' + @query + '%'  OR
+                CustomerID = @id
                 ";
 
             cmd.Parameters.AddWithValue("@query", query);
-
+            cmd.Parameters.AddWithValue("@id", x);
 
             //DataReader
             try
@@ -182,35 +186,19 @@ namespace AdventureWorks.Business.Data
         {
             Address AddressDTO = new Address
             {
+                AddressLine1 = (string)reader["AddressLine1"],
+                City = (string)reader["City"],
+                StateProvince = (string)reader["StateProvince"],
+                CountryRegion = (string)reader["CountryRegion"],
+                PostalCode = (string)reader["PostalCode"],
                 RowGuid = (Guid)reader["RowGuid"],
                 ModifiedDate = (DateTime)reader["ModifiedDate"]
             };
 
-            if (!(reader["AddressLine1"] is System.DBNull))
-            {
-                AddressDTO.AddressLine1 = (string)reader["AddressLine1"];
-            }
             if (!(reader["AddressLine2"] is System.DBNull))
             {
                 AddressDTO.AddressLine2 = (string)reader["AddressLine2"];
             }
-            if (!(reader["City"] is System.DBNull))
-            {
-                AddressDTO.City = (string)reader["City"];
-            }
-            if (!(reader["StateProvince"] is System.DBNull))
-            {
-                AddressDTO.StateProvince = (string)reader["StateProvince"];
-            }
-            if (!(reader["CountryRegion"] is System.DBNull))
-            {
-                AddressDTO.CountryRegion = (string)reader["CountryRegion"];
-            }
-            if (!(reader["PostalCode"] is System.DBNull))
-            {
-                AddressDTO.PostalCode = (string)reader["PostalCode"];
-            }
-
             return AddressDTO;
         }
         
