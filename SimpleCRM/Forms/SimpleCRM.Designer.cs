@@ -69,7 +69,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -107,14 +107,15 @@
             // newProuductToolStripMenuItem
             // 
             this.newProuductToolStripMenuItem.Name = "newProuductToolStripMenuItem";
-            this.newProuductToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.newProuductToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newProuductToolStripMenuItem.Text = "New Prouduct";
             // 
             // findProductToolStripMenuItem
             // 
             this.findProductToolStripMenuItem.Name = "findProductToolStripMenuItem";
-            this.findProductToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.findProductToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.findProductToolStripMenuItem.Text = "Find Product";
+            this.findProductToolStripMenuItem.Click += new System.EventHandler(this.findProductToolStripMenuItem_Click);
             // 
             // salesOrdersToolStripMenuItem
             // 

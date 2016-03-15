@@ -47,11 +47,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddProductForm.Designer.cs">
+      <DependentUpon>AddProductForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FindCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FindCustomerForm.Designer.cs">
       <DependentUpon>FindCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FindProductsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FindProductsForm.Designer.cs">
+      <DependentUpon>FindProductsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\ProductUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\ProductUserControl.Designer.cs">
+      <DependentUpon>ProductUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ViewCustomerInfoForm.cs">
       <SubType>Form</SubType>
@@ -68,8 +86,17 @@
       <DependentUpon>SimpleCRM.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CustomerSearchViewModel.cs" />
+    <EmbeddedResource Include="Forms\AddProductForm.resx">
+      <DependentUpon>AddProductForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FindCustomerForm.resx">
       <DependentUpon>FindCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FindProductsForm.resx">
+      <DependentUpon>FindProductsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\ProductUserControl.resx">
+      <DependentUpon>ProductUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewCustomerInfoForm.resx">
       <DependentUpon>ViewCustomerInfoForm.cs</DependentUpon>

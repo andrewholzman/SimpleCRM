@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Business.Models;
+using SimpleCRM.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,12 @@ namespace SimpleCRM
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void findProductToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FindProductsForm findProductsForm = new FindProductsForm();
+            DialogResult dr = findProductsForm.ShowDialog();
         }
     }
 }

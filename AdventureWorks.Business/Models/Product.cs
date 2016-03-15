@@ -10,11 +10,12 @@ namespace AdventureWorks.Business.Models
     {
         public int ProductID { get; set; }
         public string ProductName { get; set; }
+        public string ProductNumber { get; set; }
         public string Color { get; set; }
-        public float StandardCost { get; set; }
-        public float ListPrice { get; set; }
+        public decimal StandardCost { get; set; }
+        public decimal ListPrice { get; set; }
         public string Size { get; set; }
-        public float Weight { get; set; }
+        public decimal Weight { get; set; }
         public int ProductCategoryID { get; set; }
         public int ProductModelID { get; set; }
         public DateTime SellStartDate { get; set; }

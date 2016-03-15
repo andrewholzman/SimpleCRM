@@ -124,6 +124,86 @@ namespace AdventureWorks.Business.Data
             return addressToReturn;
         }
 
+        public List<Product> SearchProduct(string query)
+        {
+            //Variable
+            List<Product> colProducts = new List<Product>();
+            //int x;
+            //if (Int32.TryParse(query, out x)) { };
+
+
+            //Connection
+            SqlCommand cmd = GetDbCommand();
+            //SELECT (TQL)
+            cmd.CommandText = @"
+                SELECT *
+                FROM SalesLT.Product
+                WHERE Name LIKE '%' + @query + '%'
+                ";
+
+            cmd.Parameters.AddWithValue("@query", query);
+            //cmd.Parameters.AddWithValue("@id", x);
+
+            //DataReader
+            try
+            {
+                //Open connection
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                //Loop thru rows, and create Product objects
+                while (reader.Read())
+                {
+                    Product newProduct = BuildProduct(reader);
+                    colProducts.Add(newProduct);
+                }
+                //close connection
+                reader.Close();
+            }
+
+
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return colProducts;
+        }
+
+        public Product GetProduct(int Id)
+        {
+            Product productToRetun = null;
+
+            SqlCommand cmd = GetDbCommand();
+            cmd.CommandText = "SELECT * FROM SalesLT.Product WHERE CustomerId = @Id";
+            cmd.Parameters.AddWithValue("@Id", Id);
+
+            try
+            {
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+
+                if (reader.Read())
+                {
+                    productToRetun = BuildProduct(reader);
+                }
+                reader.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+
+            return productToRetun;
+        }
+
+        public Product AddProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
         private SqlCommand GetDbCommand()
         {
             //Set up database connection
@@ -201,6 +281,62 @@ namespace AdventureWorks.Business.Data
             }
             return AddressDTO;
         }
+
+        private static Product BuildProduct(SqlDataReader reader)
+        {
+            var ProductDTO = new Product
+            {
+                ProductID = (int)reader["ProductID"],
+                ProductName = (string)reader["Name"],
+                ProductNumber = (string)reader["ProductNumber"],
+                StandardCost =(decimal)reader["StandardCost"],
+                ListPrice = (decimal)reader["ListPrice"],
+                SellStartDate = (DateTime)reader["SellStartDate"],
+                RowGuid = (Guid)reader["RowGuid"],
+                ModifiedDate = (DateTime)reader["ModifiedDate"]
+            };
+
+            if (!(reader["Color"] is DBNull))
+            {
+                ProductDTO.Color = (string)reader["Color"];
+            }
+            if (!(reader["Size"] is DBNull))
+            {
+                ProductDTO.Size = (string)reader["Size"];
+            }
+            if (!(reader["Weight"] is DBNull))
+            {
+                ProductDTO.Weight = (decimal)reader["Weight"];
+            }
+            if (!(reader["ProductCategoryID"] is DBNull))
+            {
+                ProductDTO.ProductCategoryID = (int)reader["ProductCategoryID"];
+            }
+            if (!(reader["ProductModelID"] is DBNull))
+            {
+                ProductDTO.ProductModelID = (int)reader["ProductModelID"];
+            }
+            if (!(reader["SellEndDate"] is DBNull))
+            {
+                ProductDTO.SellEndDate = (DateTime)reader["SellEndDate"];
+            }
+            if (!(reader["DiscontinuedDate"] is DBNull))
+            {
+                ProductDTO.DiscontinuedDate = (DateTime)reader["DiscontinuedDate"];
+            } 
+            if (!(reader["ThumbNailPhoto"] is DBNull))
+            {
+                ProductDTO.ThumbNailPhoto = (byte[])reader["ThumbNailPhoto"];
+            }
+            if (!(reader["ThumbnailPhotoFileName"] is DBNull))
+            {
+                ProductDTO.ThumbNailFileName = (string)reader["ThumbnailPhotoFileName"];
+            }
+
+            return ProductDTO;
+
+        }
+
         
     }
 }
