@@ -37,5 +37,14 @@ namespace SimpleCRM.Forms
                 flpProducts.Controls.Add(puc);
             }
         }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnFindProduct_Click(sender, e);
+
+            }
+        }
     }
 }

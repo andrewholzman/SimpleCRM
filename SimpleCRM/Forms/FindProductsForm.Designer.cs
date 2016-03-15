@@ -37,7 +37,7 @@
             // btnFindProduct
             // 
             this.btnFindProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFindProduct.Location = new System.Drawing.Point(677, 4);
+            this.btnFindProduct.Location = new System.Drawing.Point(657, 4);
             this.btnFindProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFindProduct.Name = "btnFindProduct";
             this.btnFindProduct.Size = new System.Drawing.Size(84, 32);
@@ -53,8 +53,9 @@
             this.txtSearch.Location = new System.Drawing.Point(85, 9);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(586, 22);
+            this.txtSearch.Size = new System.Drawing.Size(566, 22);
             this.txtSearch.TabIndex = 5;
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // label1
             // 
@@ -70,17 +71,19 @@
             this.flpProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.flpProducts.AutoScroll = true;
             this.flpProducts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpProducts.Location = new System.Drawing.Point(14, 36);
             this.flpProducts.Name = "flpProducts";
-            this.flpProducts.Size = new System.Drawing.Size(747, 235);
+            this.flpProducts.Size = new System.Drawing.Size(727, 570);
             this.flpProducts.TabIndex = 7;
+            this.flpProducts.WrapContents = false;
             // 
             // FindProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(773, 283);
+            this.ClientSize = new System.Drawing.Size(753, 618);
             this.Controls.Add(this.flpProducts);
             this.Controls.Add(this.btnFindProduct);
             this.Controls.Add(this.txtSearch);

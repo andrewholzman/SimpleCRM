@@ -199,9 +199,58 @@ namespace AdventureWorks.Business.Data
             return productToRetun;
         }
 
-        public Product AddProduct(Product product)
+        public Product AddProduct(Product newProduct)
         {
-            throw new NotImplementedException();
+            //Declarations
+            Product productToReturn;
+
+            //get Sql cmd
+            SqlCommand cmd = GetDbCommand();
+
+            //Set command parameters
+            cmd.CommandText = @"
+                INSERT INTO Product
+                (Name, ProductNumber, Color, StandardCost, ListPrice, Size, Weight, ProductCategoryID, ProductModelID, SellStartDate, SellEndDate, DiscontinuedDate, ThumbNailPhoto, ThumbnailPhotoFileName)
+                VALUES
+                (@Name, @ProductNumber, @Color, @StandardCost, @ListPrice, @Size, @Weight, @ProductCategoryID, @ProductModelID, @SellStartDate, @SellEndDate, @DiscontinuedDate, @ThumbNailPhoto, @ThumbnailPhotoFileName);
+
+                SELECT @@Identity from Product
+                ";
+
+            cmd.Parameters.AddWithValue("@Name", newProduct.ProductName);
+            cmd.Parameters.AddWithValue("@ProductNumber", newProduct.ProductNumber);
+            cmd.Parameters.AddWithValue("@Color", newProduct.Color);
+            cmd.Parameters.AddWithValue("@StandardCost", newProduct.StandardCost);
+            cmd.Parameters.AddWithValue("@ListPrice", newProduct.ListPrice);
+            cmd.Parameters.AddWithValue("@Size", newProduct.Size);
+            cmd.Parameters.AddWithValue("@Weight", newProduct.Weight);
+            cmd.Parameters.AddWithValue("@ProductCategoryID", newProduct.ProductCategoryID);
+            cmd.Parameters.AddWithValue("@ProductModelID", newProduct.ProductModelID);
+            cmd.Parameters.AddWithValue("@SellStartDate", newProduct.SellStartDate);
+            cmd.Parameters.AddWithValue("@SellEndDate", newProduct.SellEndDate);
+            cmd.Parameters.AddWithValue("@DiscontinuedDate", newProduct.DiscontinuedDate);
+            cmd.Parameters.AddWithValue("@ThumbNailPhoto", newProduct.ThumbNailPhoto);
+            cmd.Parameters.AddWithValue("@ThumbnailPhotoFileName", newProduct.ThumbNailFileName);
+
+            //Execute Query
+            object objNewProductId;
+            try
+            {
+                cmd.Connection.Open();
+                objNewProductId = cmd.ExecuteScalar();
+                cmd.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            //Get new product
+            //Build new product
+            productToReturn = GetProduct((int)objNewProductId);
+
+            //Return new product
+            return productToReturn;
         }
 
         private SqlCommand GetDbCommand()
