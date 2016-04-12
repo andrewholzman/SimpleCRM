@@ -33,7 +33,7 @@ namespace SimpleCRM.Forms.UserControls
             lblStandardCost.Text = "Standard Cost: " + string.Format("{0:c}", _product.StandardCost);
             lblListPrice.Text = "List Price: " + string.Format("{0:c}", _product.ListPrice);
             lblSize.Text = "Size: " + _product.Size;
-            lblWeight.Text = "Weight: " + string.Format("",_product.Weight);
+            lblWeight.Text = "Weight: " + string.Format("{0:#.##}",_product.Weight);
             lblProductCategoryID.Text = "Category ID: " + _product.ProductCategoryID.ToString();
             lblProductModelID.Text = "Model ID: " + _product.ProductModelID.ToString();
             lblSellStartDate.Text = "Start Date: " + string.Format("{0:M/d/yyyy}", _product.SellStartDate);
@@ -47,9 +47,11 @@ namespace SimpleCRM.Forms.UserControls
 
 
 
-
-            Stream picStream = new MemoryStream(_product.ThumbNailPhoto);
-            picBoxProduct.Image = new System.Drawing.Bitmap(picStream);
+            if (!(_product.ThumbNailPhoto == null))
+            {
+                Stream picStream = new MemoryStream(_product.ThumbNailPhoto);
+                picBoxProduct.Image = new System.Drawing.Bitmap(picStream);
+            }
 
             
 

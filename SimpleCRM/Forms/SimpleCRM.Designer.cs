@@ -41,6 +41,7 @@
             this.newSalesOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findSalesOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mstrpMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,8 @@
             this.helpToolStripMenuItem});
             this.mstrpMain.Location = new System.Drawing.Point(0, 0);
             this.mstrpMain.Name = "mstrpMain";
-            this.mstrpMain.Size = new System.Drawing.Size(511, 24);
+            this.mstrpMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.mstrpMain.Size = new System.Drawing.Size(383, 24);
             this.mstrpMain.TabIndex = 2;
             this.mstrpMain.Text = "menuStrip1";
             // 
@@ -99,7 +101,8 @@
             // 
             this.productsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newProuductToolStripMenuItem,
-            this.findProductToolStripMenuItem});
+            this.findProductToolStripMenuItem,
+            this.addProductToolStripMenuItem});
             this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
             this.productsToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.productsToolStripMenuItem.Text = "&Products";
@@ -144,12 +147,20 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
+            // addProductToolStripMenuItem
+            // 
+            this.addProductToolStripMenuItem.Name = "addProductToolStripMenuItem";
+            this.addProductToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addProductToolStripMenuItem.Text = "Add Product";
+            this.addProductToolStripMenuItem.Click += new System.EventHandler(this.addProductToolStripMenuItem_Click);
+            // 
             // SimpleCRM
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 244);
+            this.ClientSize = new System.Drawing.Size(383, 198);
             this.Controls.Add(this.mstrpMain);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SimpleCRM";
             this.Text = "SimpleCRM";
             this.mstrpMain.ResumeLayout(false);
@@ -174,5 +185,6 @@
         private System.Windows.Forms.ToolStripMenuItem newSalesOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findSalesOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addProductToolStripMenuItem;
     }
 }

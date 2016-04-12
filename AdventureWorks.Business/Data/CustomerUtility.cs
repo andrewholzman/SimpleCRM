@@ -199,7 +199,7 @@ namespace AdventureWorks.Business.Data
             return productToRetun;
         }
 
-        public Product AddProduct(Product newProduct)
+        public void AddProduct(Product newProduct)
         {
             //Declarations
             Product productToReturn;
@@ -209,28 +209,48 @@ namespace AdventureWorks.Business.Data
 
             //Set command parameters
             cmd.CommandText = @"
-                INSERT INTO Product
+
+                INSERT INTO AdventureWorksLT2012.SalesLT.Product
                 (Name, ProductNumber, Color, StandardCost, ListPrice, Size, Weight, ProductCategoryID, ProductModelID, SellStartDate, SellEndDate, DiscontinuedDate, ThumbNailPhoto, ThumbnailPhotoFileName)
                 VALUES
                 (@Name, @ProductNumber, @Color, @StandardCost, @ListPrice, @Size, @Weight, @ProductCategoryID, @ProductModelID, @SellStartDate, @SellEndDate, @DiscontinuedDate, @ThumbNailPhoto, @ThumbnailPhotoFileName);
 
-                SELECT @@Identity from Product
+                SELECT @@Identity from AdventureWorksLT2012.SalesLT.Product
                 ";
 
             cmd.Parameters.AddWithValue("@Name", newProduct.ProductName);
             cmd.Parameters.AddWithValue("@ProductNumber", newProduct.ProductNumber);
-            cmd.Parameters.AddWithValue("@Color", newProduct.Color);
             cmd.Parameters.AddWithValue("@StandardCost", newProduct.StandardCost);
             cmd.Parameters.AddWithValue("@ListPrice", newProduct.ListPrice);
-            cmd.Parameters.AddWithValue("@Size", newProduct.Size);
-            cmd.Parameters.AddWithValue("@Weight", newProduct.Weight);
-            cmd.Parameters.AddWithValue("@ProductCategoryID", newProduct.ProductCategoryID);
-            cmd.Parameters.AddWithValue("@ProductModelID", newProduct.ProductModelID);
             cmd.Parameters.AddWithValue("@SellStartDate", newProduct.SellStartDate);
-            cmd.Parameters.AddWithValue("@SellEndDate", newProduct.SellEndDate);
-            cmd.Parameters.AddWithValue("@DiscontinuedDate", newProduct.DiscontinuedDate);
-            cmd.Parameters.AddWithValue("@ThumbNailPhoto", newProduct.ThumbNailPhoto);
-            cmd.Parameters.AddWithValue("@ThumbnailPhotoFileName", newProduct.ThumbNailFileName);
+
+            //Check for nulls, insert DBNull if property is null
+            if (newProduct.Color == null) { cmd.Parameters.AddWithValue("@Color", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@Color", newProduct.Color);  }
+
+            if (newProduct.Size == null) { cmd.Parameters.AddWithValue("@Size", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@Size", newProduct.Size); }
+
+            if (newProduct.Weight == null) { cmd.Parameters.AddWithValue("@Weight", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@Weight", newProduct.Weight); }
+
+            if (newProduct.ProductCategoryID == null) { cmd.Parameters.AddWithValue("@ProductCategoryID", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@ProductCategoryId", newProduct.ProductCategoryID); }
+
+            if (newProduct.ProductModelID == null) { cmd.Parameters.AddWithValue("@ProductModelID", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@ProductModelID", newProduct.ProductModelID); }
+
+            if (newProduct.SellEndDate == null) { cmd.Parameters.AddWithValue("@SellEndDate", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@SellEndDate", newProduct.SellEndDate); }
+
+            if (newProduct.DiscontinuedDate == null) { cmd.Parameters.AddWithValue("@DiscontinuedDate", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@DiscontinuedDate", newProduct.DiscontinuedDate); }
+
+            if (newProduct.ThumbNailPhoto == null) { cmd.Parameters.AddWithValue("@ThumbNailPhoto", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue(@"ThumbNailPhoto", newProduct.ThumbNailPhoto); }
+
+            if (newProduct.ThumbNailFileName == null) { cmd.Parameters.AddWithValue("@ThumbnailPhotoFileName", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@ThumbnailPhotoFileName", newProduct.ThumbNailFileName); }
 
             //Execute Query
             object objNewProductId;
@@ -244,13 +264,6 @@ namespace AdventureWorks.Business.Data
             {
                 throw;
             }
-
-            //Get new product
-            //Build new product
-            productToReturn = GetProduct((int)objNewProductId);
-
-            //Return new product
-            return productToReturn;
         }
 
         private SqlCommand GetDbCommand()
@@ -386,6 +399,6 @@ namespace AdventureWorks.Business.Data
 
         }
 
-        
+
     }
 }

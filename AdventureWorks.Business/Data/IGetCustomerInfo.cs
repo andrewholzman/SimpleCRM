@@ -14,6 +14,7 @@ namespace AdventureWorks.Business.Data
         Customer GetCustomer(int Id);
         Address GetAddress(int customerID);
         Product GetProduct(int Id);
-        Product AddProduct(Product product);
+        void AddProduct(Product product);
+       // void UpdateProductPicture(object id, byte[] buffer);
     }
 }
