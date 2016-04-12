@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace AdventureWorks.Business.Data
 {
-    public interface IGetCustomerInfo
+    public interface IGetProductInfo
     {
-        List<Customer> SearchCustomer(string query);
-        Customer GetCustomer(int Id);
-        Address GetAddress(int customerID);
+        List<Product> SearchProduct(string query);
+        Product GetProduct(int Id);
+        void AddProduct(Product newProduct);
     }
 }

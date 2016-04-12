@@ -44,6 +44,8 @@
     <Compile Include="Data\CustomerUtility.cs" />
     <Compile Include="Data\DependencyInjectorUtility.cs" />
     <Compile Include="Data\IGetCustomerInfo.cs" />
+    <Compile Include="Data\IGetProductInfo.cs" />
+    <Compile Include="Data\ProductUtility.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerAddress.cs" />

@@ -25,11 +25,11 @@ namespace SimpleCRM.Forms
 
             Product prodToEnter = createProduct();
 
-            IGetCustomerInfo customerUtility = DependencyInjectorUtility.GetCustomerInfo();
+            IGetProductInfo productUtility = DependencyInjectorUtility.GetProductInfo();
 
             try
             {
-                customerUtility.AddProduct(prodToEnter);
+                productUtility.AddProduct(prodToEnter);
             }
             catch (Exception ex)
             {

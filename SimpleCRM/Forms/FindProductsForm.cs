@@ -25,11 +25,11 @@ namespace SimpleCRM.Forms
         private void btnFindProduct_Click(object sender, EventArgs e)
         {
             flpProducts.Controls.Clear(); //remove controls
-            IGetCustomerInfo customerInfo = DependencyInjectorUtility.GetCustomerInfo();
+            IGetProductInfo productInfo = DependencyInjectorUtility.GetProductInfo();
 
             if (string.IsNullOrWhiteSpace(txtSearch.Text)) { MessageBox.Show("Product Search Value Required"); return; }
 
-            List<Product> searchResults = customerInfo.SearchProduct(txtSearch.Text);
+            List<Product> searchResults = productInfo.SearchProduct(txtSearch.Text);
 
             foreach (Product productDTO in searchResults)
             {

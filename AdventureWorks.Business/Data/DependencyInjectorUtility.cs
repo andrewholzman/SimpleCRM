@@ -13,5 +13,10 @@ namespace AdventureWorks.Business.Data
         {
             return new CustomerUtility();
         }
+
+        public static IGetProductInfo GetProductInfo()
+        {
+            return new ProductUtility();
+        }
     }
 }
