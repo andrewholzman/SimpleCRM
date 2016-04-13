@@ -15,6 +15,7 @@ namespace AdventureWorks.Business.Models
         public string StateProvince { get; set; }
         public string CountryRegion { get; set; }
         public string PostalCode { get; set; }
+        public string AddressType { get; set;  }
         public Guid RowGuid { get; set; }
         public DateTime ModifiedDate { get; set; }
     }

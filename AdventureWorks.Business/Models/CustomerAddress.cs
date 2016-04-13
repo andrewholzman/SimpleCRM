@@ -8,8 +8,8 @@ namespace AdventureWorks.Business.Models
 {
     public class CustomerAddress
     {
-        public int CustomerId { get; set; }
-        public int AddressID { get; set; }
+        public int? CustomerId { get; set; }
+        public int? AddressID { get; set; }
         public string AddressType { get; set; }
 
         public Guid RowGuid { get; set; }
