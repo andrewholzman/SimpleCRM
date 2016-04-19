@@ -45,10 +45,13 @@
     <Compile Include="Data\DependencyInjectorUtility.cs" />
     <Compile Include="Data\IGetCustomerInfo.cs" />
     <Compile Include="Data\IGetProductInfo.cs" />
+    <Compile Include="Data\IGetSalesOrderInfo.cs" />
     <Compile Include="Data\ProductUtility.cs" />
+    <Compile Include="Data\SalesOrderUtility.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerAddress.cs" />
+    <Compile Include="Models\SalesOrder.cs" />
     <Compile Include="Models\ThumbNailImage.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />

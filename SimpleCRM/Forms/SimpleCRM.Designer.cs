@@ -37,11 +37,11 @@
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProuductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newSalesOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.findSalesOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mstrpMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,15 +110,22 @@
             // newProuductToolStripMenuItem
             // 
             this.newProuductToolStripMenuItem.Name = "newProuductToolStripMenuItem";
-            this.newProuductToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newProuductToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.newProuductToolStripMenuItem.Text = "New Prouduct";
             // 
             // findProductToolStripMenuItem
             // 
             this.findProductToolStripMenuItem.Name = "findProductToolStripMenuItem";
-            this.findProductToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.findProductToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.findProductToolStripMenuItem.Text = "Find Product";
             this.findProductToolStripMenuItem.Click += new System.EventHandler(this.findProductToolStripMenuItem_Click);
+            // 
+            // addProductToolStripMenuItem
+            // 
+            this.addProductToolStripMenuItem.Name = "addProductToolStripMenuItem";
+            this.addProductToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.addProductToolStripMenuItem.Text = "Add Product";
+            this.addProductToolStripMenuItem.Click += new System.EventHandler(this.addProductToolStripMenuItem_Click);
             // 
             // salesOrdersToolStripMenuItem
             // 
@@ -140,6 +147,7 @@
             this.findSalesOrderToolStripMenuItem.Name = "findSalesOrderToolStripMenuItem";
             this.findSalesOrderToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.findSalesOrderToolStripMenuItem.Text = "Find Sales Order";
+            this.findSalesOrderToolStripMenuItem.Click += new System.EventHandler(this.findSalesOrderToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -147,20 +155,13 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
-            // addProductToolStripMenuItem
-            // 
-            this.addProductToolStripMenuItem.Name = "addProductToolStripMenuItem";
-            this.addProductToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addProductToolStripMenuItem.Text = "Add Product";
-            this.addProductToolStripMenuItem.Click += new System.EventHandler(this.addProductToolStripMenuItem_Click);
-            // 
             // SimpleCRM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 198);
             this.Controls.Add(this.mstrpMain);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SimpleCRM";
             this.Text = "SimpleCRM";
             this.mstrpMain.ResumeLayout(false);

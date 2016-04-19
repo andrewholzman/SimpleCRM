@@ -353,7 +353,7 @@ namespace AdventureWorks.Business.Data
 
         //}
         
-
+        
 
         private SqlCommand GetDbCommand()
         {
@@ -412,6 +412,8 @@ namespace AdventureWorks.Business.Data
           
             return customerDTO;
         }
+
+        
 
         private static Address BuildAddress(SqlDataReader reader)
         {

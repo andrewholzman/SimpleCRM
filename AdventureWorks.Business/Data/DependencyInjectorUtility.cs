@@ -18,5 +18,10 @@ namespace AdventureWorks.Business.Data
         {
             return new ProductUtility();
         }
+
+        public static IGetSalesOrderInfo GetSalesInfo()
+        {
+            return new SalesOrderUtility();
+        }
     }
 }
