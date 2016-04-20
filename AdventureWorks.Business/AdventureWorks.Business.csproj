@@ -59,7 +59,7 @@
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ProductModelProductDescription.cs" />
     <Compile Include="Models\SalesOrderDetail.cs" />
-    <Compile Include="Models\SalesOrderHeader.cs" />
+    <Compile Include="Models\SalesOrderDates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

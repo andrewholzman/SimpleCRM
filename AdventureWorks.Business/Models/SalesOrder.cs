@@ -20,5 +20,7 @@ namespace AdventureWorks.Business.Models
         public string ShipMethod { get; set; }
         public decimal SubTotal { get; set; }
         public decimal TotalDue { get; set; }
+
+
     }
 }

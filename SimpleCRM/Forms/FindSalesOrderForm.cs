@@ -1,5 +1,6 @@
 ﻿using AdventureWorks.Business.Data;
 using AdventureWorks.Business.Models;
+using SimpleCRM.Forms;
 using SimpleCRM.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,23 @@ namespace SimpleCRM
 
             dgvSalesOrderInfo.DataSource = null;
             dgvSalesOrderInfo.DataSource = sosvCollection;
+        }
+
+        private void dgvSalesOrderInfo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SalesOrderSearchViewModel salesOrderVM = null;
+            if (dgvSalesOrderInfo.SelectedRows.Count > 0)
+            {
+                salesOrderVM = (SalesOrderSearchViewModel)dgvSalesOrderInfo.SelectedRows[0].DataBoundItem;
+            }
+
+            if (salesOrderVM == null)
+            {
+                return;
+            }
+            ViewSalesOrderInfoForm salesOrderInfoForm = new ViewSalesOrderInfoForm(salesOrderVM.SalesOrderID);
+            salesOrderInfoForm.ShowDialog();
+            btnFindSalesOrder_Click(sender, e);
         }
     }
 }

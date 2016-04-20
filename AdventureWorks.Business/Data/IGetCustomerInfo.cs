@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace AdventureWorks.Business.Data
 {
-    public interface IGetCustomerInfo
+    public interface IGetCustomerInfo //interface to accessing customer info
     {
         List<Customer> SearchCustomer(string query);
         Customer GetCustomer(int Id);
+        int GetCustomerID(int salesOrderID);
         Address GetAddress(int customerID);
         CustomerAddress GetCustomerAddress(int customerID);
         void UpdateCustomer(Customer custToUpdate);

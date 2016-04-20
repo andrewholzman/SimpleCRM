@@ -10,11 +10,11 @@ namespace AdventureWorks.Business.Models
     {
         public int SalesOrderID { get; set; }
         public int SalesOrderDetailID { get; set; }
-        public int OrderQty { get; set; }
+        public Int16 OrderQty { get; set; }
         public int ProductID { get; set; }
-        public float UnitPrice { get; set; }
-        public float UnitPriceDiscount { get; set; }
-        public float LineTotal { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal UnitPriceDiscount { get; set; }
+        public decimal LineTotal { get; set; }
         public Guid RowGuid { get; set; }
         public DateTime ModifiedDate { get; set; }
     }

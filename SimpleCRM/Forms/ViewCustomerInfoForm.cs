@@ -15,7 +15,6 @@ namespace SimpleCRM.Forms
     public partial class ViewCustomerInfoForm : Form
     {
         public int customerID;
-
         public ViewCustomerInfoForm(int customerID)
         {
             InitializeComponent();

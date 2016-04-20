@@ -47,6 +47,7 @@
             this.dgvSalesOrderInfo.RowTemplate.Height = 24;
             this.dgvSalesOrderInfo.Size = new System.Drawing.Size(576, 168);
             this.dgvSalesOrderInfo.TabIndex = 7;
+            this.dgvSalesOrderInfo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesOrderInfo_CellDoubleClick);
             // 
             // btnFindSalesOrder
             // 

@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace AdventureWorks.Business.Data
 {
-    public interface IGetSalesOrderInfo
+    public interface IGetSalesOrderInfo //interface for accessing sales order info
     {
         List<SalesOrder> SearchSalesOrder(string query);
-
+        SalesOrder GetSalesOrder(int SalesOrderID);
+        SalesOrderDates GetDates(int SalesOrderID);
+        List<SalesOrderDetail> GetSalesOrderDetails(int salesOrderID);
     }
 }

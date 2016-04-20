@@ -90,6 +90,36 @@ namespace AdventureWorks.Business.Data
             return customerToReturn;
         }
 
+        public int GetCustomerID(int salesOrderID)
+        {
+            int customerIDToReturn = 0;
+
+            SqlCommand cmd = GetDbCommand();
+            cmd.CommandText = "SELECT CustomerID FROM SalesLT.SalesOrderHeader WHERE SalesOrderID = @Id";
+            cmd.Parameters.AddWithValue("@Id", salesOrderID);
+
+            try
+            {
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+
+                if (reader.Read())
+                {
+                    customerIDToReturn = (int)reader["CustomerID"];
+                }
+                reader.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+
+            return customerIDToReturn;
+        }
+
         public Address GetAddress(int customerID)
         {
             Address addressToReturn = null;
