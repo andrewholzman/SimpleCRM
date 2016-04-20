@@ -42,6 +42,7 @@ namespace SimpleCRM
             dgvSalesOrderInfo.DataSource = sosvCollection;
         }
 
+        //event handler to allow users to double click a sales order and open up a SalesOrderInfoForm w/ desired SalesOrder info
         private void dgvSalesOrderInfo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             SalesOrderSearchViewModel salesOrderVM = null;
@@ -57,6 +58,16 @@ namespace SimpleCRM
             ViewSalesOrderInfoForm salesOrderInfoForm = new ViewSalesOrderInfoForm(salesOrderVM.SalesOrderID);
             salesOrderInfoForm.ShowDialog();
             btnFindSalesOrder_Click(sender, e);
+        }
+
+        //event handler to allow users to hit enter rather than press the 'Find' button
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnFindSalesOrder_Click(sender, e);
+
+            }
         }
     }
 }

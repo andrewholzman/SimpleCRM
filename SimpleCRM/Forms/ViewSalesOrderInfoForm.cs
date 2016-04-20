@@ -70,5 +70,25 @@ namespace SimpleCRM.Forms
             dgvProductInfo.DataSource = pvCollection;
 
         }
+
+        private void dgvProductInfo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            {
+                ProductViewModel productVM = null;
+                if (dgvProductInfo.SelectedRows.Count > 0)
+                {
+                    productVM = (ProductViewModel)dgvProductInfo.SelectedRows[0].DataBoundItem;
+                }
+
+                if (productVM == null)
+                {
+                    return;
+                }
+
+                ViewProductInfoForm productInfoForm = new ViewProductInfoForm(productVM.ProductID);
+                productInfoForm.ShowDialog();
+
+            }
+        }
     }
 }

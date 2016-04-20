@@ -56,5 +56,11 @@ namespace SimpleCRM.Forms.UserControls
             
 
         }
+
+        private void ProductUserControl_DoubleClick(object sender, EventArgs e)
+        {
+            ViewProductInfoForm productInfoForm = new ViewProductInfoForm(_product.ProductID);
+            DialogResult dr = productInfoForm.ShowDialog();
+        }
     }
 }

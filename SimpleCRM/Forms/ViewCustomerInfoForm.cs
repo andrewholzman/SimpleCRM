@@ -15,7 +15,7 @@ namespace SimpleCRM.Forms
     public partial class ViewCustomerInfoForm : Form
     {
         public int customerID;
-        public ViewCustomerInfoForm(int customerID)
+        public ViewCustomerInfoForm(int customerID) //initialize with the customerID associated to the DGV Cell that was clicked
         {
             InitializeComponent();
             this.customerID = customerID;
@@ -23,13 +23,16 @@ namespace SimpleCRM.Forms
 
         private void ViewCustomerInfoForm_Load(object sender, EventArgs e)
         {
+            //create instances of Model objects
             Customer customer;
             Address address;
             CustomerAddress customerAddress = new CustomerAddress();
 
+            //create instance of CustomerUtility
             IGetCustomerInfo customerInfoUtil = DependencyInjectorUtility.GetCustomerInfo();
-            customer = customerInfoUtil.GetCustomer(customerID);
+            customer = customerInfoUtil.GetCustomer(customerID); //create a Customer object based upon the customerID parameter that this form loads with (from DGV)
 
+            //set text box text
             txtTitle.Text = customer.Title;
             txtFirstName.Text = customer.FirstName;
             txtLastName.Text = customer.LastName;
@@ -41,8 +44,8 @@ namespace SimpleCRM.Forms
             txtPhone.Text = customer.Phone;
             txtEmailAddress.Text = customer.EmailAddress;
 
-            address = customerInfoUtil.GetAddress(customerID);
-            if (!(address == null))
+            address = customerInfoUtil.GetAddress(customerID); //get Address info using customerID
+            if (!(address == null)) //if the address isn't null, set the address text box text
             {
                 txtLine1.Text = address.AddressLine1;
                 txtLine2.Text = address.AddressLine2;
@@ -53,18 +56,18 @@ namespace SimpleCRM.Forms
                 txtAddressType.Text = address.AddressType;
             }
 
-            customerAddress = customerInfoUtil.GetCustomerAddress(customerID);
+            customerAddress = customerInfoUtil.GetCustomerAddress(customerID); //get customerAddress object
             
 
 
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e) //exit form
         {
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e) //save any changes in the textboxes to the Customer object
         {
             
             SetCustomer();

@@ -45,9 +45,10 @@
             // 
             // picBoxProduct
             // 
-            this.picBoxProduct.Location = new System.Drawing.Point(3, 3);
+            this.picBoxProduct.Location = new System.Drawing.Point(2, 2);
+            this.picBoxProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.picBoxProduct.Name = "picBoxProduct";
-            this.picBoxProduct.Size = new System.Drawing.Size(196, 206);
+            this.picBoxProduct.Size = new System.Drawing.Size(147, 167);
             this.picBoxProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBoxProduct.TabIndex = 0;
             this.picBoxProduct.TabStop = false;
@@ -56,7 +57,8 @@
             // 
             this.lblProductName.AutoSize = true;
             this.lblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductName.Location = new System.Drawing.Point(204, 3);
+            this.lblProductName.Location = new System.Drawing.Point(153, 2);
+            this.lblProductName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(148, 25);
             this.lblProductName.TabIndex = 1;
@@ -66,7 +68,8 @@
             // 
             this.lblColor.AutoSize = true;
             this.lblColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColor.Location = new System.Drawing.Point(206, 65);
+            this.lblColor.Location = new System.Drawing.Point(154, 53);
+            this.lblColor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(45, 18);
             this.lblColor.TabIndex = 2;
@@ -76,7 +79,8 @@
             // 
             this.lblStandardCost.AutoSize = true;
             this.lblStandardCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStandardCost.Location = new System.Drawing.Point(206, 97);
+            this.lblStandardCost.Location = new System.Drawing.Point(154, 79);
+            this.lblStandardCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStandardCost.Name = "lblStandardCost";
             this.lblStandardCost.Size = new System.Drawing.Size(103, 18);
             this.lblStandardCost.TabIndex = 3;
@@ -86,7 +90,8 @@
             // 
             this.lblListPrice.AutoSize = true;
             this.lblListPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblListPrice.Location = new System.Drawing.Point(206, 129);
+            this.lblListPrice.Location = new System.Drawing.Point(154, 105);
+            this.lblListPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblListPrice.Name = "lblListPrice";
             this.lblListPrice.Size = new System.Drawing.Size(69, 18);
             this.lblListPrice.TabIndex = 4;
@@ -96,7 +101,8 @@
             // 
             this.lblSize.AutoSize = true;
             this.lblSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSize.Location = new System.Drawing.Point(206, 159);
+            this.lblSize.Location = new System.Drawing.Point(154, 129);
+            this.lblSize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(37, 18);
             this.lblSize.TabIndex = 5;
@@ -106,7 +112,8 @@
             // 
             this.lblWeight.AutoSize = true;
             this.lblWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWeight.Location = new System.Drawing.Point(206, 191);
+            this.lblWeight.Location = new System.Drawing.Point(154, 155);
+            this.lblWeight.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblWeight.Name = "lblWeight";
             this.lblWeight.Size = new System.Drawing.Size(54, 18);
             this.lblWeight.TabIndex = 6;
@@ -116,7 +123,8 @@
             // 
             this.lblProductModelID.AutoSize = true;
             this.lblProductModelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductModelID.Location = new System.Drawing.Point(471, 191);
+            this.lblProductModelID.Location = new System.Drawing.Point(353, 155);
+            this.lblProductModelID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProductModelID.Name = "lblProductModelID";
             this.lblProductModelID.Size = new System.Drawing.Size(115, 18);
             this.lblProductModelID.TabIndex = 11;
@@ -126,7 +134,8 @@
             // 
             this.lblProductCategoryID.AutoSize = true;
             this.lblProductCategoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductCategoryID.Location = new System.Drawing.Point(471, 159);
+            this.lblProductCategoryID.Location = new System.Drawing.Point(353, 129);
+            this.lblProductCategoryID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProductCategoryID.Name = "lblProductCategoryID";
             this.lblProductCategoryID.Size = new System.Drawing.Size(134, 18);
             this.lblProductCategoryID.TabIndex = 10;
@@ -136,7 +145,8 @@
             // 
             this.lblDiscontinuedDate.AutoSize = true;
             this.lblDiscontinuedDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscontinuedDate.Location = new System.Drawing.Point(471, 129);
+            this.lblDiscontinuedDate.Location = new System.Drawing.Point(353, 105);
+            this.lblDiscontinuedDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDiscontinuedDate.Name = "lblDiscontinuedDate";
             this.lblDiscontinuedDate.Size = new System.Drawing.Size(129, 18);
             this.lblDiscontinuedDate.TabIndex = 9;
@@ -146,7 +156,8 @@
             // 
             this.lblSellEndDate.AutoSize = true;
             this.lblSellEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSellEndDate.Location = new System.Drawing.Point(471, 97);
+            this.lblSellEndDate.Location = new System.Drawing.Point(353, 79);
+            this.lblSellEndDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSellEndDate.Name = "lblSellEndDate";
             this.lblSellEndDate.Size = new System.Drawing.Size(97, 18);
             this.lblSellEndDate.TabIndex = 8;
@@ -156,7 +167,8 @@
             // 
             this.lblSellStartDate.AutoSize = true;
             this.lblSellStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSellStartDate.Location = new System.Drawing.Point(471, 65);
+            this.lblSellStartDate.Location = new System.Drawing.Point(353, 53);
+            this.lblSellStartDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSellStartDate.Name = "lblSellStartDate";
             this.lblSellStartDate.Size = new System.Drawing.Size(102, 18);
             this.lblSellStartDate.TabIndex = 7;
@@ -164,7 +176,7 @@
             // 
             // ProductUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblProductModelID);
             this.Controls.Add(this.lblProductCategoryID);
@@ -178,9 +190,11 @@
             this.Controls.Add(this.lblColor);
             this.Controls.Add(this.lblProductName);
             this.Controls.Add(this.picBoxProduct);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ProductUserControl";
-            this.Size = new System.Drawing.Size(787, 224);
+            this.Size = new System.Drawing.Size(590, 182);
             this.Load += new System.EventHandler(this.ProductUserControl_Load);
+            this.DoubleClick += new System.EventHandler(this.ProductUserControl_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxProduct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

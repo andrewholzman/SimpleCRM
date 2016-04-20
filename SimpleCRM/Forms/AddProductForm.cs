@@ -20,6 +20,7 @@ namespace SimpleCRM.Forms
             InitializeComponent();
         }
 
+        //event handler to save data to new Product object
         private void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -199,7 +200,7 @@ namespace SimpleCRM.Forms
             return newImage;
         }
 
-        private void ShowPicture(byte[] pictureBuffer)
+        private void ShowPicture(byte[] pictureBuffer) //method to view Product thumbnail images
         {
             Stream picStream = new MemoryStream(pictureBuffer);
             picBoxProduct.Image = new Bitmap(picStream);

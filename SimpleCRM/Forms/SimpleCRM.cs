@@ -19,6 +19,7 @@ namespace SimpleCRM
             InitializeComponent();
         }
 
+        //Load each respective form depending on which menu item is clicked
         private void findCustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FindCustomerForm findCustomerForm = new FindCustomerForm();

@@ -83,7 +83,7 @@ namespace AdventureWorks.Business.Data
             Product productToRetun = null;
 
             SqlCommand cmd = GetDbCommand();
-            cmd.CommandText = "SELECT * FROM SalesLT.Product WHERE CustomerId = @Id";
+            cmd.CommandText = "SELECT * FROM SalesLT.Product WHERE ProductID = @Id";
             cmd.Parameters.AddWithValue("@Id", Id);
 
             try
