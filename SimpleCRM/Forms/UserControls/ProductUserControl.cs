@@ -26,9 +26,11 @@ namespace SimpleCRM.Forms.UserControls
             _product = product;
         }
 
+        //set user control display to selected Product properties
         private void ProductUserControl_Load(object sender, EventArgs e)
         {
             lblProductName.Text = _product.ProductName;
+            lblProductID.Text = "Product ID: " + _product.ProductID;
             lblColor.Text = "Color: " + _product.Color;
             lblStandardCost.Text = "Standard Cost: " + string.Format("{0:c}", _product.StandardCost);
             lblListPrice.Text = "List Price: " + string.Format("{0:c}", _product.ListPrice);

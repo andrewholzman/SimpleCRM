@@ -40,13 +40,14 @@
             this.lblDiscontinuedDate = new System.Windows.Forms.Label();
             this.lblSellEndDate = new System.Windows.Forms.Label();
             this.lblSellStartDate = new System.Windows.Forms.Label();
+            this.lblProductID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxProduct)).BeginInit();
             this.SuspendLayout();
             // 
             // picBoxProduct
             // 
             this.picBoxProduct.Location = new System.Drawing.Point(2, 2);
-            this.picBoxProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picBoxProduct.Margin = new System.Windows.Forms.Padding(2);
             this.picBoxProduct.Name = "picBoxProduct";
             this.picBoxProduct.Size = new System.Drawing.Size(147, 167);
             this.picBoxProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -174,10 +175,22 @@
             this.lblSellStartDate.TabIndex = 7;
             this.lblSellStartDate.Text = "Sell Start Date";
             // 
+            // lblProductID
+            // 
+            this.lblProductID.AutoSize = true;
+            this.lblProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductID.Location = new System.Drawing.Point(411, 2);
+            this.lblProductID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProductID.Name = "lblProductID";
+            this.lblProductID.Size = new System.Drawing.Size(112, 25);
+            this.lblProductID.TabIndex = 12;
+            this.lblProductID.Text = "Product ID";
+            // 
             // ProductUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblProductID);
             this.Controls.Add(this.lblProductModelID);
             this.Controls.Add(this.lblProductCategoryID);
             this.Controls.Add(this.lblDiscontinuedDate);
@@ -190,7 +203,7 @@
             this.Controls.Add(this.lblColor);
             this.Controls.Add(this.lblProductName);
             this.Controls.Add(this.picBoxProduct);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProductUserControl";
             this.Size = new System.Drawing.Size(590, 182);
             this.Load += new System.EventHandler(this.ProductUserControl_Load);
@@ -215,5 +228,6 @@
         private System.Windows.Forms.Label lblDiscontinuedDate;
         private System.Windows.Forms.Label lblSellEndDate;
         private System.Windows.Forms.Label lblSellStartDate;
+        private System.Windows.Forms.Label lblProductID;
     }
 }

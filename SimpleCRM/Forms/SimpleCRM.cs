@@ -48,5 +48,11 @@ namespace SimpleCRM
             FindSalesOrderForm findSalesOrderForm = new FindSalesOrderForm();
             DialogResult dr = findSalesOrderForm.ShowDialog();
         }
+
+        private void newSalesOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddSalesOrderForm addSalesOrderForm = new AddSalesOrderForm();
+            DialogResult dr = addSalesOrderForm.ShowDialog();
+        }
     }
 }

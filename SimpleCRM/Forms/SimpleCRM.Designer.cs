@@ -141,6 +141,7 @@
             this.newSalesOrderToolStripMenuItem.Name = "newSalesOrderToolStripMenuItem";
             this.newSalesOrderToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.newSalesOrderToolStripMenuItem.Text = "New Sales Order";
+            this.newSalesOrderToolStripMenuItem.Click += new System.EventHandler(this.newSalesOrderToolStripMenuItem_Click);
             // 
             // findSalesOrderToolStripMenuItem
             // 

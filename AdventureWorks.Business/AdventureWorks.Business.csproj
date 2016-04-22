@@ -52,6 +52,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerAddress.cs" />
     <Compile Include="Models\SalesOrder.cs" />
+    <Compile Include="Models\SalesOrderHeader.cs" />
     <Compile Include="Models\ThumbNailImage.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />

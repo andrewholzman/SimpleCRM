@@ -37,10 +37,10 @@
             // btnFindProduct
             // 
             this.btnFindProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFindProduct.Location = new System.Drawing.Point(657, 4);
-            this.btnFindProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFindProduct.Location = new System.Drawing.Point(594, 3);
+            this.btnFindProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFindProduct.Name = "btnFindProduct";
-            this.btnFindProduct.Size = new System.Drawing.Size(84, 32);
+            this.btnFindProduct.Size = new System.Drawing.Size(63, 26);
             this.btnFindProduct.TabIndex = 6;
             this.btnFindProduct.Text = "Find";
             this.btnFindProduct.UseVisualStyleBackColor = true;
@@ -50,19 +50,20 @@
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(85, 9);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSearch.Location = new System.Drawing.Point(64, 7);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(566, 22);
+            this.txtSearch.Size = new System.Drawing.Size(527, 20);
             this.txtSearch.TabIndex = 5;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 12);
+            this.label1.Location = new System.Drawing.Point(8, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Product:";
             // 
@@ -73,21 +74,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flpProducts.AutoScroll = true;
             this.flpProducts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpProducts.Location = new System.Drawing.Point(14, 36);
+            this.flpProducts.Location = new System.Drawing.Point(10, 29);
+            this.flpProducts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flpProducts.Name = "flpProducts";
-            this.flpProducts.Size = new System.Drawing.Size(727, 570);
+            this.flpProducts.Size = new System.Drawing.Size(646, 463);
             this.flpProducts.TabIndex = 7;
             this.flpProducts.WrapContents = false;
             // 
             // FindProductsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 618);
+            this.ClientSize = new System.Drawing.Size(666, 502);
             this.Controls.Add(this.flpProducts);
             this.Controls.Add(this.btnFindProduct);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FindProductsForm";
             this.Text = "FindProductsForm";
             this.ResumeLayout(false);
