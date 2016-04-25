@@ -13,8 +13,7 @@ namespace AdventureWorks.Business.Data
     {
         public void AddProduct(Product newProduct)
         {
-            //Declarations
-            Product productToReturn;
+           
 
             //get Sql cmd
             SqlCommand cmd = GetDbCommand();
@@ -112,8 +111,8 @@ namespace AdventureWorks.Business.Data
         {
             //Variable
             List<Product> colProducts = new List<Product>();
-            //int x;
-            //if (Int32.TryParse(query, out x)) { };
+            int x;
+            if (Int32.TryParse(query, out x)) { };
 
 
             //Connection
@@ -123,10 +122,11 @@ namespace AdventureWorks.Business.Data
                 SELECT *
                 FROM SalesLT.Product
                 WHERE Name LIKE '%' + @query + '%'
+                OR ProductID LIKE @id
                 ";
 
             cmd.Parameters.AddWithValue("@query", query);
-            //cmd.Parameters.AddWithValue("@id", x);
+            cmd.Parameters.AddWithValue("@id", x);
 
             //DataReader
             try

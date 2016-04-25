@@ -36,6 +36,8 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddCustomerForm.Designer.cs">
+      <DependentUpon>AddCustomerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddSalesOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +91,12 @@
     <Compile Include="Forms\UserControls\ProductUserControl.Designer.cs">
       <DependentUpon>ProductUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ViewAddressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewAddressForm.Designer.cs">
+      <DependentUpon>ViewAddressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ViewCustomerInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +127,9 @@
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\SalesOrderProductViewModel.cs" />
     <Compile Include="ViewModels\SalesOrderSearchViewModel.cs" />
+    <EmbeddedResource Include="Forms\AddCustomerForm.resx">
+      <DependentUpon>AddCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddSalesOrderForm.resx">
       <DependentUpon>AddSalesOrderForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserControls\ProductUserControl.resx">
       <DependentUpon>ProductUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewAddressForm.resx">
+      <DependentUpon>ViewAddressForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewCustomerInfoForm.resx">
       <DependentUpon>ViewCustomerInfoForm.cs</DependentUpon>

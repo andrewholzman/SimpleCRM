@@ -54,5 +54,11 @@ namespace SimpleCRM
             AddSalesOrderForm addSalesOrderForm = new AddSalesOrderForm();
             DialogResult dr = addSalesOrderForm.ShowDialog();
         }
+
+        private void newCustomerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddCustomerForm addCustomerForm = new AddCustomerForm();
+            DialogResult dr = addCustomerForm.ShowDialog();
+        }
     }
 }

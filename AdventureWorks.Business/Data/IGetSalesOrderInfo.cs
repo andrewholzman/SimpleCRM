@@ -13,5 +13,8 @@ namespace AdventureWorks.Business.Data
         SalesOrder GetSalesOrder(int SalesOrderID);
         SalesOrderDates GetDates(int SalesOrderID);
         List<SalesOrderDetail> GetSalesOrderDetails(int salesOrderID);
+
+        int AddSalesOrderHeader(SalesOrderHeader soHeader);
+        void AddSalesOrderDetail(SalesOrderDetail soDetail);
     }
 }

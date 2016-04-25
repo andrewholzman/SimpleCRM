@@ -50,27 +50,27 @@
             this.txtCreditCardApprovalCode = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtComment = new System.Windows.Forms.TextBox();
+            this.txtRevisionNumber = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbShipMethod = new System.Windows.Forms.ComboBox();
+            this.numStatus = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
+            this.txtComment = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtProductID = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.numQuantity = new System.Windows.Forms.NumericUpDown();
+            this.btnLookUp = new System.Windows.Forms.Button();
+            this.btnAddToOrder = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.txtDiscount = new System.Windows.Forms.TextBox();
-            this.btnAddToOrder = new System.Windows.Forms.Button();
-            this.btnLookUp = new System.Windows.Forms.Button();
-            this.numStatus = new System.Windows.Forms.NumericUpDown();
-            this.cbShipMethod = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtRevisionNumber = new System.Windows.Forms.TextBox();
+            this.numQuantity = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtProductID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numStatus)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvProductList
@@ -86,7 +86,7 @@
             this.btnSave.Location = new System.Drawing.Point(425, 523);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 1;
+            this.btnSave.TabIndex = 15;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -96,7 +96,7 @@
             this.btnCancel.Location = new System.Drawing.Point(506, 523);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -125,7 +125,7 @@
             this.txtCustomerID.Location = new System.Drawing.Point(94, 22);
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.Size = new System.Drawing.Size(80, 20);
-            this.txtCustomerID.TabIndex = 5;
+            this.txtCustomerID.TabIndex = 1;
             // 
             // label2
             // 
@@ -141,14 +141,14 @@
             this.dtpOrderDate.Location = new System.Drawing.Point(371, 19);
             this.dtpOrderDate.Name = "dtpOrderDate";
             this.dtpOrderDate.Size = new System.Drawing.Size(183, 20);
-            this.dtpOrderDate.TabIndex = 8;
+            this.dtpOrderDate.TabIndex = 7;
             // 
             // dtpDueDate
             // 
             this.dtpDueDate.Location = new System.Drawing.Point(371, 45);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.Size = new System.Drawing.Size(183, 20);
-            this.dtpDueDate.TabIndex = 9;
+            this.dtpDueDate.TabIndex = 8;
             // 
             // dtpShipDate
             // 
@@ -156,7 +156,7 @@
             this.dtpShipDate.Name = "dtpShipDate";
             this.dtpShipDate.ShowCheckBox = true;
             this.dtpShipDate.Size = new System.Drawing.Size(183, 20);
-            this.dtpShipDate.TabIndex = 10;
+            this.dtpShipDate.TabIndex = 9;
             // 
             // label3
             // 
@@ -200,7 +200,7 @@
             this.chkOrderOnlineFlag.Location = new System.Drawing.Point(180, 24);
             this.chkOrderOnlineFlag.Name = "chkOrderOnlineFlag";
             this.chkOrderOnlineFlag.Size = new System.Drawing.Size(97, 17);
-            this.chkOrderOnlineFlag.TabIndex = 16;
+            this.chkOrderOnlineFlag.TabIndex = 2;
             this.chkOrderOnlineFlag.Text = "Ordered Online";
             this.chkOrderOnlineFlag.UseVisualStyleBackColor = true;
             // 
@@ -209,7 +209,7 @@
             this.txtPurchaseOrderNumber.Location = new System.Drawing.Point(94, 101);
             this.txtPurchaseOrderNumber.Name = "txtPurchaseOrderNumber";
             this.txtPurchaseOrderNumber.Size = new System.Drawing.Size(183, 20);
-            this.txtPurchaseOrderNumber.TabIndex = 18;
+            this.txtPurchaseOrderNumber.TabIndex = 5;
             // 
             // label7
             // 
@@ -225,7 +225,7 @@
             this.txtAccountNumber.Location = new System.Drawing.Point(94, 75);
             this.txtAccountNumber.Name = "txtAccountNumber";
             this.txtAccountNumber.Size = new System.Drawing.Size(183, 20);
-            this.txtAccountNumber.TabIndex = 20;
+            this.txtAccountNumber.TabIndex = 4;
             // 
             // label8
             // 
@@ -241,7 +241,7 @@
             this.txtCreditCardApprovalCode.Location = new System.Drawing.Point(147, 130);
             this.txtCreditCardApprovalCode.Name = "txtCreditCardApprovalCode";
             this.txtCreditCardApprovalCode.Size = new System.Drawing.Size(130, 20);
-            this.txtCreditCardApprovalCode.TabIndex = 22;
+            this.txtCreditCardApprovalCode.TabIndex = 6;
             // 
             // label9
             // 
@@ -285,12 +285,57 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Customer Info";
             // 
-            // txtComment
+            // txtRevisionNumber
             // 
-            this.txtComment.Location = new System.Drawing.Point(371, 124);
-            this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(182, 20);
-            this.txtComment.TabIndex = 23;
+            this.txtRevisionNumber.Location = new System.Drawing.Point(93, 48);
+            this.txtRevisionNumber.Name = "txtRevisionNumber";
+            this.txtRevisionNumber.ReadOnly = true;
+            this.txtRevisionNumber.Size = new System.Drawing.Size(65, 20);
+            this.txtRevisionNumber.TabIndex = 29;
+            this.txtRevisionNumber.TabStop = false;
+            this.txtRevisionNumber.Text = "1";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(283, 101);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(70, 13);
+            this.label14.TabIndex = 28;
+            this.label14.Text = "Ship Method:";
+            // 
+            // cbShipMethod
+            // 
+            this.cbShipMethod.FormattingEnabled = true;
+            this.cbShipMethod.Items.AddRange(new object[] {
+            "AIR TRANSPORT 1",
+            "CARGO TRANSPORT 5"});
+            this.cbShipMethod.Location = new System.Drawing.Point(371, 97);
+            this.cbShipMethod.Name = "cbShipMethod";
+            this.cbShipMethod.Size = new System.Drawing.Size(183, 21);
+            this.cbShipMethod.TabIndex = 10;
+            // 
+            // numStatus
+            // 
+            this.numStatus.Location = new System.Drawing.Point(207, 49);
+            this.numStatus.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numStatus.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numStatus.Name = "numStatus";
+            this.numStatus.Size = new System.Drawing.Size(70, 20);
+            this.numStatus.TabIndex = 3;
+            this.numStatus.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label10
             // 
@@ -300,6 +345,13 @@
             this.label10.Size = new System.Drawing.Size(54, 13);
             this.label10.TabIndex = 24;
             this.label10.Text = "Comment:";
+            // 
+            // txtComment
+            // 
+            this.txtComment.Location = new System.Drawing.Point(371, 124);
+            this.txtComment.Name = "txtComment";
+            this.txtComment.Size = new System.Drawing.Size(182, 20);
+            this.txtComment.TabIndex = 11;
             // 
             // groupBox3
             // 
@@ -318,47 +370,26 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Product Info";
             // 
-            // txtProductID
+            // btnLookUp
             // 
-            this.txtProductID.Location = new System.Drawing.Point(73, 18);
-            this.txtProductID.Name = "txtProductID";
-            this.txtProductID.Size = new System.Drawing.Size(100, 20);
-            this.txtProductID.TabIndex = 0;
+            this.btnLookUp.Location = new System.Drawing.Point(9, 51);
+            this.btnLookUp.Name = "btnLookUp";
+            this.btnLookUp.Size = new System.Drawing.Size(100, 30);
+            this.btnLookUp.TabIndex = 7;
+            this.btnLookUp.TabStop = false;
+            this.btnLookUp.Text = "Product List";
+            this.btnLookUp.UseVisualStyleBackColor = true;
+            this.btnLookUp.Click += new System.EventHandler(this.btnLookUp_Click);
             // 
-            // label11
+            // btnAddToOrder
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 22);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(61, 13);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Product ID:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(410, 22);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Quantity:";
-            // 
-            // numQuantity
-            // 
-            this.numQuantity.Location = new System.Drawing.Point(463, 19);
-            this.numQuantity.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numQuantity.Name = "numQuantity";
-            this.numQuantity.Size = new System.Drawing.Size(100, 20);
-            this.numQuantity.TabIndex = 3;
-            this.numQuantity.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.btnAddToOrder.Location = new System.Drawing.Point(463, 51);
+            this.btnAddToOrder.Name = "btnAddToOrder";
+            this.btnAddToOrder.Size = new System.Drawing.Size(100, 30);
+            this.btnAddToOrder.TabIndex = 15;
+            this.btnAddToOrder.Text = "Add To Order";
+            this.btnAddToOrder.UseVisualStyleBackColor = true;
+            this.btnAddToOrder.Click += new System.EventHandler(this.btnAddToOrder_Click);
             // 
             // label13
             // 
@@ -374,79 +405,50 @@
             this.txtDiscount.Location = new System.Drawing.Point(286, 18);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(100, 20);
-            this.txtDiscount.TabIndex = 4;
+            this.txtDiscount.TabIndex = 13;
             this.txtDiscount.Text = "0.00";
             // 
-            // btnAddToOrder
+            // numQuantity
             // 
-            this.btnAddToOrder.Location = new System.Drawing.Point(463, 51);
-            this.btnAddToOrder.Name = "btnAddToOrder";
-            this.btnAddToOrder.Size = new System.Drawing.Size(100, 30);
-            this.btnAddToOrder.TabIndex = 6;
-            this.btnAddToOrder.Text = "Add To Order";
-            this.btnAddToOrder.UseVisualStyleBackColor = true;
-            this.btnAddToOrder.Click += new System.EventHandler(this.btnAddToOrder_Click);
-            // 
-            // btnLookUp
-            // 
-            this.btnLookUp.Location = new System.Drawing.Point(9, 51);
-            this.btnLookUp.Name = "btnLookUp";
-            this.btnLookUp.Size = new System.Drawing.Size(100, 30);
-            this.btnLookUp.TabIndex = 7;
-            this.btnLookUp.Text = "Product List";
-            this.btnLookUp.UseVisualStyleBackColor = true;
-            this.btnLookUp.Click += new System.EventHandler(this.btnLookUp_Click);
-            // 
-            // numStatus
-            // 
-            this.numStatus.Location = new System.Drawing.Point(207, 49);
-            this.numStatus.Maximum = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            this.numStatus.Minimum = new decimal(new int[] {
+            this.numQuantity.Location = new System.Drawing.Point(463, 19);
+            this.numQuantity.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numStatus.Name = "numStatus";
-            this.numStatus.Size = new System.Drawing.Size(70, 20);
-            this.numStatus.TabIndex = 26;
-            this.numStatus.Value = new decimal(new int[] {
+            this.numQuantity.Name = "numQuantity";
+            this.numQuantity.Size = new System.Drawing.Size(100, 20);
+            this.numQuantity.TabIndex = 14;
+            this.numQuantity.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // cbShipMethod
+            // label12
             // 
-            this.cbShipMethod.FormattingEnabled = true;
-            this.cbShipMethod.Items.AddRange(new object[] {
-            "AIR TRANSPORT 1",
-            "CARGO TRANSPORT 5"});
-            this.cbShipMethod.Location = new System.Drawing.Point(371, 97);
-            this.cbShipMethod.Name = "cbShipMethod";
-            this.cbShipMethod.Size = new System.Drawing.Size(183, 21);
-            this.cbShipMethod.TabIndex = 27;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(410, 22);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Quantity:";
             // 
-            // label14
+            // label11
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(283, 101);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(70, 13);
-            this.label14.TabIndex = 28;
-            this.label14.Text = "Ship Method:";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(61, 13);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Product ID:";
             // 
-            // txtRevisionNumber
+            // txtProductID
             // 
-            this.txtRevisionNumber.Location = new System.Drawing.Point(93, 48);
-            this.txtRevisionNumber.Name = "txtRevisionNumber";
-            this.txtRevisionNumber.ReadOnly = true;
-            this.txtRevisionNumber.Size = new System.Drawing.Size(65, 20);
-            this.txtRevisionNumber.TabIndex = 29;
-            this.txtRevisionNumber.Text = "1";
+            this.txtProductID.Location = new System.Drawing.Point(73, 18);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.Size = new System.Drawing.Size(100, 20);
+            this.txtProductID.TabIndex = 12;
             // 
             // AddSalesOrderForm
             // 
@@ -466,10 +468,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numStatus)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numStatus)).EndInit();
             this.ResumeLayout(false);
 
         }

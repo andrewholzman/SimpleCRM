@@ -1,6 +1,6 @@
 ﻿namespace SimpleCRM.Forms
 {
-    partial class ViewCustomerInfoForm
+    partial class AddCustomerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.gbAddress = new System.Windows.Forms.GroupBox();
+            this.txtAddressType = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.txtCountryRegion = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtPostalCode = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtStateProvince = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtLine2 = new System.Windows.Forms.TextBox();
+            this.txtLine1 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.gbCustomerInfo = new System.Windows.Forms.GroupBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
@@ -48,37 +64,178 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.gbAddress = new System.Windows.Forms.GroupBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtAddressType = new System.Windows.Forms.TextBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnViewAddress = new System.Windows.Forms.Button();
-            this.txtCountryRegion = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtPostalCode = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtCity = new System.Windows.Forms.TextBox();
-            this.txtStateProvince = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtLine2 = new System.Windows.Forms.TextBox();
-            this.txtLine1 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.gbCustomerInfo.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbAddress.SuspendLayout();
+            this.gbCustomerInfo.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // gbAddress
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "First Name";
+            this.gbAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbAddress.Controls.Add(this.txtAddressType);
+            this.gbAddress.Controls.Add(this.label17);
+            this.gbAddress.Controls.Add(this.btnCancel);
+            this.gbAddress.Controls.Add(this.btnSave);
+            this.gbAddress.Controls.Add(this.txtCountryRegion);
+            this.gbAddress.Controls.Add(this.label15);
+            this.gbAddress.Controls.Add(this.txtPostalCode);
+            this.gbAddress.Controls.Add(this.label14);
+            this.gbAddress.Controls.Add(this.txtCity);
+            this.gbAddress.Controls.Add(this.txtStateProvince);
+            this.gbAddress.Controls.Add(this.label13);
+            this.gbAddress.Controls.Add(this.txtLine2);
+            this.gbAddress.Controls.Add(this.txtLine1);
+            this.gbAddress.Controls.Add(this.label12);
+            this.gbAddress.Controls.Add(this.label11);
+            this.gbAddress.Controls.Add(this.label10);
+            this.gbAddress.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.gbAddress.Location = new System.Drawing.Point(12, 148);
+            this.gbAddress.Name = "gbAddress";
+            this.gbAddress.Size = new System.Drawing.Size(515, 157);
+            this.gbAddress.TabIndex = 4;
+            this.gbAddress.TabStop = false;
+            this.gbAddress.Text = "Address";
+            // 
+            // txtAddressType
+            // 
+            this.txtAddressType.Location = new System.Drawing.Point(99, 124);
+            this.txtAddressType.Name = "txtAddressType";
+            this.txtAddressType.Size = new System.Drawing.Size(174, 20);
+            this.txtAddressType.TabIndex = 16;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(6, 125);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(80, 15);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "Address Type";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(424, 126);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(80, 23);
+            this.btnCancel.TabIndex = 19;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(330, 126);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(80, 23);
+            this.btnSave.TabIndex = 18;
+            this.btnSave.Text = "Add";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // txtCountryRegion
+            // 
+            this.txtCountryRegion.Location = new System.Drawing.Point(99, 98);
+            this.txtCountryRegion.Name = "txtCountryRegion";
+            this.txtCountryRegion.Size = new System.Drawing.Size(174, 20);
+            this.txtCountryRegion.TabIndex = 14;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(6, 99);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(48, 15);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "Country";
+            // 
+            // txtPostalCode
+            // 
+            this.txtPostalCode.Location = new System.Drawing.Point(330, 98);
+            this.txtPostalCode.Name = "txtPostalCode";
+            this.txtPostalCode.Size = new System.Drawing.Size(174, 20);
+            this.txtPostalCode.TabIndex = 15;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(296, 99);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(24, 15);
+            this.label14.TabIndex = 10;
+            this.label14.Text = "Zip";
+            // 
+            // txtCity
+            // 
+            this.txtCity.Location = new System.Drawing.Point(99, 72);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(174, 20);
+            this.txtCity.TabIndex = 12;
+            // 
+            // txtStateProvince
+            // 
+            this.txtStateProvince.Location = new System.Drawing.Point(330, 72);
+            this.txtStateProvince.Name = "txtStateProvince";
+            this.txtStateProvince.Size = new System.Drawing.Size(174, 20);
+            this.txtStateProvince.TabIndex = 13;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(289, 73);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 15);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "State";
+            // 
+            // txtLine2
+            // 
+            this.txtLine2.Location = new System.Drawing.Point(99, 46);
+            this.txtLine2.Name = "txtLine2";
+            this.txtLine2.Size = new System.Drawing.Size(405, 20);
+            this.txtLine2.TabIndex = 11;
+            // 
+            // txtLine1
+            // 
+            this.txtLine1.Location = new System.Drawing.Point(99, 19);
+            this.txtLine1.Name = "txtLine1";
+            this.txtLine1.Size = new System.Drawing.Size(405, 20);
+            this.txtLine1.TabIndex = 10;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(6, 73);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(26, 15);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "City";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 53);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 15);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Line 2";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, 26);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 15);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Line 1";
             // 
             // gbCustomerInfo
             // 
@@ -105,9 +262,10 @@
             this.gbCustomerInfo.Controls.Add(this.label1);
             this.gbCustomerInfo.Location = new System.Drawing.Point(12, 12);
             this.gbCustomerInfo.Name = "gbCustomerInfo";
-            this.gbCustomerInfo.Size = new System.Drawing.Size(519, 132);
-            this.gbCustomerInfo.TabIndex = 1;
+            this.gbCustomerInfo.Size = new System.Drawing.Size(515, 132);
+            this.gbCustomerInfo.TabIndex = 3;
             this.gbCustomerInfo.TabStop = false;
+            this.gbCustomerInfo.Text = "Customer";
             // 
             // label16
             // 
@@ -265,224 +423,39 @@
             this.txtFirstName.Size = new System.Drawing.Size(146, 20);
             this.txtFirstName.TabIndex = 2;
             // 
-            // gbAddress
+            // label1
             // 
-            this.gbAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbAddress.Controls.Add(this.label17);
-            this.gbAddress.Controls.Add(this.txtAddressType);
-            this.gbAddress.Controls.Add(this.btnCancel);
-            this.gbAddress.Controls.Add(this.btnSave);
-            this.gbAddress.Controls.Add(this.btnViewAddress);
-            this.gbAddress.Controls.Add(this.txtCountryRegion);
-            this.gbAddress.Controls.Add(this.label15);
-            this.gbAddress.Controls.Add(this.txtPostalCode);
-            this.gbAddress.Controls.Add(this.label14);
-            this.gbAddress.Controls.Add(this.txtCity);
-            this.gbAddress.Controls.Add(this.txtStateProvince);
-            this.gbAddress.Controls.Add(this.label13);
-            this.gbAddress.Controls.Add(this.txtLine2);
-            this.gbAddress.Controls.Add(this.txtLine1);
-            this.gbAddress.Controls.Add(this.label12);
-            this.gbAddress.Controls.Add(this.label11);
-            this.gbAddress.Controls.Add(this.label10);
-            this.gbAddress.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.gbAddress.Location = new System.Drawing.Point(12, 148);
-            this.gbAddress.Name = "gbAddress";
-            this.gbAddress.Size = new System.Drawing.Size(519, 165);
-            this.gbAddress.TabIndex = 2;
-            this.gbAddress.TabStop = false;
-            this.gbAddress.Text = "Address";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "First Name";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(6, 125);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(80, 15);
-            this.label17.TabIndex = 18;
-            this.label17.Text = "Address Type";
-            // 
-            // txtAddressType
-            // 
-            this.txtAddressType.Location = new System.Drawing.Point(99, 124);
-            this.txtAddressType.Name = "txtAddressType";
-            this.txtAddressType.Size = new System.Drawing.Size(141, 20);
-            this.txtAddressType.TabIndex = 16;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(429, 126);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 19;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(337, 126);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(86, 23);
-            this.btnSave.TabIndex = 18;
-            this.btnSave.Text = "Save Changes";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnViewAddress
-            // 
-            this.btnViewAddress.Location = new System.Drawing.Point(246, 126);
-            this.btnViewAddress.Name = "btnViewAddress";
-            this.btnViewAddress.Size = new System.Drawing.Size(86, 23);
-            this.btnViewAddress.TabIndex = 17;
-            this.btnViewAddress.Text = "View Address";
-            this.btnViewAddress.UseVisualStyleBackColor = true;
-            this.btnViewAddress.Click += new System.EventHandler(this.btnViewAddress_Click);
-            // 
-            // txtCountryRegion
-            // 
-            this.txtCountryRegion.Location = new System.Drawing.Point(99, 98);
-            this.txtCountryRegion.Name = "txtCountryRegion";
-            this.txtCountryRegion.Size = new System.Drawing.Size(174, 20);
-            this.txtCountryRegion.TabIndex = 14;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(6, 99);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(48, 15);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "Country";
-            // 
-            // txtPostalCode
-            // 
-            this.txtPostalCode.Location = new System.Drawing.Point(330, 98);
-            this.txtPostalCode.Name = "txtPostalCode";
-            this.txtPostalCode.Size = new System.Drawing.Size(174, 20);
-            this.txtPostalCode.TabIndex = 15;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(296, 99);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(24, 15);
-            this.label14.TabIndex = 10;
-            this.label14.Text = "Zip";
-            // 
-            // txtCity
-            // 
-            this.txtCity.Location = new System.Drawing.Point(99, 72);
-            this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(174, 20);
-            this.txtCity.TabIndex = 12;
-            // 
-            // txtStateProvince
-            // 
-            this.txtStateProvince.Location = new System.Drawing.Point(330, 72);
-            this.txtStateProvince.Name = "txtStateProvince";
-            this.txtStateProvince.Size = new System.Drawing.Size(174, 20);
-            this.txtStateProvince.TabIndex = 13;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(289, 73);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 15);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "State";
-            // 
-            // txtLine2
-            // 
-            this.txtLine2.Location = new System.Drawing.Point(99, 46);
-            this.txtLine2.Name = "txtLine2";
-            this.txtLine2.Size = new System.Drawing.Size(405, 20);
-            this.txtLine2.TabIndex = 11;
-            // 
-            // txtLine1
-            // 
-            this.txtLine1.Location = new System.Drawing.Point(99, 19);
-            this.txtLine1.Name = "txtLine1";
-            this.txtLine1.Size = new System.Drawing.Size(405, 20);
-            this.txtLine1.TabIndex = 10;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(6, 73);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(26, 15);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "City";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 53);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 15);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Line 2";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(6, 26);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 15);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Line 1";
-            // 
-            // ViewCustomerInfoForm
+            // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 325);
+            this.ClientSize = new System.Drawing.Size(539, 317);
             this.Controls.Add(this.gbAddress);
             this.Controls.Add(this.gbCustomerInfo);
-            this.Name = "ViewCustomerInfoForm";
-            this.Text = "ViewCustomerInfoForm";
-            this.Load += new System.EventHandler(this.ViewCustomerInfoForm_Load);
-            this.gbCustomerInfo.ResumeLayout(false);
-            this.gbCustomerInfo.PerformLayout();
+            this.Name = "AddCustomerForm";
+            this.Text = "AddCustomerForm";
             this.gbAddress.ResumeLayout(false);
             this.gbAddress.PerformLayout();
+            this.gbCustomerInfo.ResumeLayout(false);
+            this.gbCustomerInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox gbCustomerInfo;
-        private System.Windows.Forms.TextBox txtSuffix;
-        private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.TextBox txtMiddleName;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtFirstName;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtEmailAddress;
-        private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.TextBox txtSalesPerson;
-        private System.Windows.Forms.TextBox txtCompany;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox gbAddress;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtCountryRegion;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtPostalCode;
@@ -495,12 +468,26 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnViewAddress;
+        private System.Windows.Forms.GroupBox gbCustomerInfo;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.TextBox txtEmailAddress;
+        private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.TextBox txtSalesPerson;
+        private System.Windows.Forms.TextBox txtCompany;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtSuffix;
+        private System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.TextBox txtMiddleName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAddressType;
-        private System.Windows.Forms.Label label17;
     }
 }

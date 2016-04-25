@@ -27,8 +27,8 @@ namespace AdventureWorks.Business.Data
                 SELECT *
                 FROM SalesLT.Customer
                 WHERE FirstName LIKE '%' + @query + '%' OR
-                LastName LIKE '%' + @query + '%'  OR
-                CustomerID = @id
+                LastName LIKE '%' + @query + '%' OR
+                CustomerID LIKE @id
                 ";
 
             cmd.Parameters.AddWithValue("@query", query);
@@ -120,6 +120,52 @@ namespace AdventureWorks.Business.Data
             return customerIDToReturn;
         }
 
+        public int GetCustomerID() //used to retrieve the most recent CustomerID
+        {
+            int customerIDToReturn = 0;
+
+            SqlCommand cmd = GetDbCommand();
+            cmd.CommandText = @" 
+                SELECT TOP 1 CustomerID 
+                FROM AdventureWorksLT2012.SalesLT.Customer
+                ORDER BY CustomerID DESC;
+                ";
+
+            //Execute Query
+            object objNewCustomerID;
+            try
+            {
+                cmd.Connection.Open();
+                objNewCustomerID = cmd.ExecuteScalar();
+                cmd.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            try
+            {
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+
+                if (reader.Read())
+                {
+                    customerIDToReturn = (int)reader["CustomerID"]; //set properties of the new SalesOrdre based upon DB data
+                }
+                reader.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+
+            return customerIDToReturn;
+        }
+
         public Address GetAddress(int customerID)
         {
             Address addressToReturn = null;
@@ -159,6 +205,52 @@ namespace AdventureWorks.Business.Data
 
             return addressToReturn;
         }
+
+        public int GetAddressID()
+        {
+            int addressIDToReturn = 0;
+
+            SqlCommand cmd = GetDbCommand();
+            cmd.CommandText = @" 
+                SELECT TOP 1 AddressID 
+                FROM AdventureWorksLT2012.SalesLT.Address
+                ORDER BY AddressID DESC;
+                ";
+
+            //Execute Query
+            object objNewAddressID;
+            try
+            {
+                cmd.Connection.Open();
+                objNewAddressID = cmd.ExecuteScalar();
+                cmd.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            try
+            {
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+
+                if (reader.Read())
+                {
+                    addressIDToReturn = (int)reader["AddressID"]; //set properties of the new SalesOrdre based upon DB data
+                }
+                reader.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+
+            return addressIDToReturn;
+        } //used to retrieve the most recet AddressID
 
         public CustomerAddress GetCustomerAddress(int customerID)
         {
@@ -262,128 +354,203 @@ namespace AdventureWorks.Business.Data
             newCustomer.ModifiedDate = lastModified;
         }
 
-        //public void UpdateAddress(Address addressToUpdate)
-        //{
-        //    //Create new Address object
-        //    Address newAddress = new Address();
+        public void AddCustomer(Customer custToAdd)
+        {
+           //Declarations
 
-        //    //Declarations
+            //get Sql cmd
+            SqlCommand cmd = GetDbCommand();
 
-        //    //get Sql cmd
-        //    SqlCommand cmd = GetDbCommand();
+            //Set command parameters
+            cmd.CommandText = @"
+                INSERT INTO AdventureWorksLT2012.SalesLT.Customer
+                (NameStyle, Title, FirstName, MiddleName, LastName, Suffix, CompanyName, SalesPerson, EmailAddress, Phone, PasswordHash, PasswordSalt, ModifiedDate)
+                VALUES
+                (@NameStyle, @Title, @FirstName, @MiddleName, @LastName, @Suffix, @CompanyName, @SalesPerson, @EmailAddress, @Phone, @PasswordHash, @PasswordSalt, @ModifiedDate);
 
-        //    //Set command parameters
-        //    cmd.CommandText = @"
-        //        UPDATE AdventureWorksLT2012.SalesLT.Address
-        //        SET AddressLine1 = @AddressLine1,
-        //            AddressLine2 = @AddressLine2,
-        //            City = @City,
-        //            StateProvince = @StateProvince,
-        //            CountryRegion = @CountryRegion,
-        //            PostalCode = @PostalCode,
-        //            ModifiedDate = @ModifiedDate
-        //        INNER JOIN SalesLT.CustomerAddress
-        //        ON Address.AddressID=CustomerAddress.AddressID
-        //        WHERE SalesLT.CustomerAddress.CustomerID = @CustomerID
-        //    ";
-
-        //    DateTime lastModified = DateTime.Now;
-
-        //    // Set parameters for non-null values
-        //    cmd.Parameters.AddWithValue("@AddressLine1", addressToUpdate.AddressLine1);
-        //    cmd.Parameters.AddWithValue("@City", addressToUpdate.City);
-        //    cmd.Parameters.AddWithValue("@StateProvince", addressToUpdate.StateProvince);
-        //    cmd.Parameters.AddWithValue("@CountryRegion", addressToUpdate.CountryRegion);
-        //    cmd.Parameters.AddWithValue("@PostalCode", addressToUpdate.PostalCode);
-
-        //    //Check null values and set parameter for AddressLine2
-        //    if (addressToUpdate.AddressLine2 == null) { cmd.Parameters.AddWithValue("@AddressLine2", DBNull.Value); }
-        //    else { cmd.Parameters.AddWithValue("@AddressLine2", addressToUpdate.AddressLine2); }
-
-            
-        //    try
-        //    {
-        //        cmd.Connection.Open();
-        //        cmd.ExecuteScalar();
-        //        cmd.Connection.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-
-        //    //Update last modified date
-        //    addressToUpdate.ModifiedDate = lastModified;
-
-        //}
+                SELECT @@Identity FROM AdventureWorksLT2012.SalesLT.Customer;
+                ";
 
 
-        //public void AddAddress(Address addressToAdd, CustomerAddress customerAddress)
-        //{
-        //    {
-        //        //Create new Address object
-        //        Address newAddress = new Address();
-        //        CustomerAddress newCustomerAddress = new CustomerAddress();
+
+            DateTime lastModified = DateTime.Now;
+
+            // Set parameters for non-null values
+            cmd.Parameters.AddWithValue("@NameStyle", 0);
+            cmd.Parameters.AddWithValue("@FirstName", custToAdd.FirstName);
+            cmd.Parameters.AddWithValue("@LastName", custToAdd.LastName);
+            cmd.Parameters.AddWithValue(@"ModifiedDate", lastModified);
+            cmd.Parameters.AddWithValue("@PasswordHash", custToAdd.PasswordHash);
+            cmd.Parameters.AddWithValue("@PasswordSalt", custToAdd.PasswordSalt);
+
+            //Check null values and set parameters
+            if (custToAdd.Title == null) { cmd.Parameters.AddWithValue("@Title", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@Title", custToAdd.Title); }
+
+            if (custToAdd.MiddleName == null) { cmd.Parameters.AddWithValue("@MiddleName", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@MiddleName", custToAdd.MiddleName); }
+
+            if (custToAdd.Suffix == null) { cmd.Parameters.AddWithValue("@Suffix", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@Suffix", custToAdd.Suffix); }
+
+            if (custToAdd.CompanyName == null) { cmd.Parameters.AddWithValue("@CompanyName", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@CompanyName", custToAdd.CompanyName); }
+
+            if (custToAdd.SalesPerson == null) { cmd.Parameters.AddWithValue("@SalesPerson", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@SalesPerson", custToAdd.SalesPerson); }
+
+            if (custToAdd.EmailAddress == null) { cmd.Parameters.AddWithValue("@EmailAddress", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@EmailAddress", custToAdd.EmailAddress); }
+
+            if (custToAdd.Phone == null) { cmd.Parameters.AddWithValue("@Phone", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@Phone", custToAdd.Phone); }
+
+            try
+            {
+                cmd.Connection.Open();
+                cmd.ExecuteScalar();
+                cmd.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+
+        public void UpdateAddress(Address addressToUpdate)
+        {
+            //Create new Address object
+            DateTime modifiedDate = DateTime.Now;
+
+            //Declarations
+
+            //get Sql cmd
+            SqlCommand cmd = GetDbCommand();
+
+            //Set command parameters
+            cmd.CommandText = @"
+                UPDATE AdventureWorksLT2012.SalesLT.Address
+                SET AddressLine1 = @AddressLine1,
+                    AddressLine2 = @AddressLine2,
+                    City = @City,
+                    StateProvince = @StateProvince,
+                    CountryRegion = @CountryRegion,
+                    PostalCode = @PostalCode,
+                    ModifiedDate = @ModifiedDate
+                FROM AdventureWorksLT2012.SalesLT.Address
+                INNER JOIN AdventureWorksLT2012.SalesLT.CustomerAddress
+                ON Address.AddressID = CustomerAddress.AddressID
+                WHERE CustomerAddress.CustomerID = 29490;
+            ";
+
+            DateTime lastModified = DateTime.Now;
+
+            // Set parameters for non-null values
+            cmd.Parameters.AddWithValue("@AddressLine1", addressToUpdate.AddressLine1);
+            cmd.Parameters.AddWithValue("@City", addressToUpdate.City);
+            cmd.Parameters.AddWithValue("@StateProvince", addressToUpdate.StateProvince);
+            cmd.Parameters.AddWithValue("@CountryRegion", addressToUpdate.CountryRegion);
+            cmd.Parameters.AddWithValue("@PostalCode", addressToUpdate.PostalCode);
+            cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
+
+            //Check null values and set parameter for AddressLine2
+            if (addressToUpdate.AddressLine2 == null) { cmd.Parameters.AddWithValue("@AddressLine2", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@AddressLine2", addressToUpdate.AddressLine2); }
 
 
-        //        //Declarations
+            try
+            {
+                cmd.Connection.Open();
+                cmd.ExecuteScalar();
+                cmd.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //        //get Sql cmd
-        //        SqlCommand cmd = GetDbCommand();
+            //Update last modified date
+            addressToUpdate.ModifiedDate = lastModified;
 
-        //        //Set command parameters
+        }
 
-        //        cmd.CommandText = @"
-        //        INSERT INTO AdventureWorksLT2012.SalesLT.Address
-        //            (AddressID, AddressLine1, AddressLine2, City, StateProvince, CountryRegion, PostalCode, ModifiedDate)
-        //        VALUES
-        //            (@AddressID, @AddressLine1, @AddressLine2, @City, @StateProvince, @CountryRegion, @PostalCode, @ModifiedDate);
+        public void AddAddress(Address addressToAdd)
+        {
+            //Declarations
+            DateTime modifiedDate = DateTime.Now;
 
-        //        SELECT @@Identity from SalesLT.Address
+            //get Sql cmd
+            SqlCommand cmd = GetDbCommand();
 
-        //        INSERT INTO AdventureWorksLT2012.SalesLT.CustomerAddress
-        //            (CustomerID, AddressID, AddressType)
-        //        VALUES 
-        //            (@CustomerID, @AddressID, @AddressType)
-                
-        //        ";
+            //Set command parameters
+            cmd.CommandText = @"
+                INSERT INTO AdventureWorksLT2012.SalesLT.Address
+                (AddressLine1, AddressLine2, City, StateProvince, CountryRegion, PostalCode, ModifiedDate)
+                VALUES
+                (@AddressLine1, @AddressLine2, @City, @StateProvince, @CountryRegion, @PostalCode, @ModifiedDate);
 
-        //        DateTime lastModified = DateTime.Now;
+                SELECT @@Identity FROM AdventureWorksLT2012.SalesLT.Address;
+                ";
 
-        //        // Set parameters for non-null values
-        //        cmd.Parameters.AddWithValue("@AddressID", addressToAdd.AddressID);
-        //        cmd.Parameters.AddWithValue("@AddressLine1", addressToAdd.AddressLine1);
-        //        cmd.Parameters.AddWithValue("@City", addressToAdd.City);
-        //        cmd.Parameters.AddWithValue("@StateProvince", addressToAdd.StateProvince);
-        //        cmd.Parameters.AddWithValue("@CountryRegion", addressToAdd.CountryRegion);
-        //        cmd.Parameters.AddWithValue("@PostalCode", addressToAdd.PostalCode);
+            cmd.Parameters.AddWithValue("@AddressLine1", addressToAdd.AddressLine1);
+            cmd.Parameters.AddWithValue("@City", addressToAdd.City);
+            cmd.Parameters.AddWithValue("@StateProvince", addressToAdd.StateProvince);
+            cmd.Parameters.AddWithValue("@CountryRegion", addressToAdd.CountryRegion);
+            cmd.Parameters.AddWithValue("@PostalCode", addressToAdd.PostalCode);
+            cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
 
-        //        cmd.Parameters.AddWithValue("@CustomerID", customerAddress.CustomerId);
-
-        //        //Check null values and set parameter for AddressLine2
-        //        if (addressToAdd.AddressLine2 == null) { cmd.Parameters.AddWithValue("@AddressLine2", DBNull.Value); }
-        //        else { cmd.Parameters.AddWithValue("@AddressLine2", addressToAdd.AddressLine2); }
+            if (addressToAdd.AddressLine2 == null) { cmd.Parameters.AddWithValue("@AddressLine2", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@AddressLine2", addressToAdd.AddressLine2); }
 
 
-        //        try
-        //        {
-        //            cmd.Connection.Open();
-        //            cmd.ExecuteScalar();
-        //            cmd.Connection.Close();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw;
-        //        }
 
-        //        //Update last modified date
-        //        addressToAdd.ModifiedDate = lastModified;
+            try
+            {
+                cmd.Connection.Open();
+                cmd.ExecuteScalar();
+                cmd.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
 
-        //    }
+        }
 
-        //}
-        
-        
+        public void AddCustomerAddress(CustomerAddress custAddress)
+        {
+            //Declarations
+            DateTime modifiedDate = DateTime.Now;
+
+            //get Sql cmd
+            SqlCommand cmd = GetDbCommand();
+
+            //Set command 
+            cmd.CommandText = @"
+                INSERT INTO AdventureWorksLT2012.SalesLT.CustomerAddress
+                (CustomerID, AddressID, AddressType, ModifiedDate)
+                VALUES 
+                (@CustomerID, @AddressID, @AddressType, @ModifiedDate)
+                ";
+
+            cmd.Parameters.AddWithValue("@CustomerID", custAddress.CustomerId);
+            cmd.Parameters.AddWithValue("@AddressID", custAddress.AddressID);
+            cmd.Parameters.AddWithValue("@AddressType", custAddress.AddressType);
+            cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
+
+
+            try
+            {
+                cmd.Connection.Open();
+                cmd.ExecuteScalar();
+                cmd.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
         private SqlCommand GetDbCommand()
         {

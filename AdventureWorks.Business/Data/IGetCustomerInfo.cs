@@ -12,11 +12,15 @@ namespace AdventureWorks.Business.Data
         List<Customer> SearchCustomer(string query);
         Customer GetCustomer(int Id);
         int GetCustomerID(int salesOrderID);
+        int GetCustomerID();
         Address GetAddress(int customerID);
+        int GetAddressID();
         CustomerAddress GetCustomerAddress(int customerID);
         void UpdateCustomer(Customer custToUpdate);
-        //void UpdateAddress(Address addressToUpdate);
-        //void AddAddress(Address addressToAdd, CustomerAddress customerAddress);
+        void AddCustomer(Customer custToAdd);
+        void UpdateAddress(Address addressToUpdate);
+        void AddAddress(Address addressToAdd);
+        void AddCustomerAddress(CustomerAddress custAddress);
 
 
     }

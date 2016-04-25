@@ -15,6 +15,9 @@ namespace SimpleCRM.Forms
     public partial class ViewCustomerInfoForm : Form
     {
         public int customerID;
+        Customer customer;
+        Address address;
+        CustomerAddress customerAddress = new CustomerAddress();
         public ViewCustomerInfoForm(int customerID) //initialize with the customerID associated to the DGV Cell that was clicked
         {
             InitializeComponent();
@@ -23,11 +26,6 @@ namespace SimpleCRM.Forms
 
         private void ViewCustomerInfoForm_Load(object sender, EventArgs e)
         {
-            //create instances of Model objects
-            Customer customer;
-            Address address;
-            CustomerAddress customerAddress = new CustomerAddress();
-
             //create instance of CustomerUtility
             IGetCustomerInfo customerInfoUtil = DependencyInjectorUtility.GetCustomerInfo();
             customer = customerInfoUtil.GetCustomer(customerID); //create a Customer object based upon the customerID parameter that this form loads with (from DGV)
@@ -69,121 +67,62 @@ namespace SimpleCRM.Forms
 
         private void btnSave_Click(object sender, EventArgs e) //save any changes in the textboxes to the Customer object
         {
-            
-            SetCustomer();
-            //SetAddress();
+            //Save updated customer info to database
+            IGetCustomerInfo customerInfoUtil = DependencyInjectorUtility.GetCustomerInfo();
+            customer = customerInfoUtil.GetCustomer(customerID);
+
+            customer.NameStyle = false;
+            customer.FirstName = txtFirstName.Text;
+            customer.LastName = txtLastName.Text;
+            customer.PasswordHash = "TEST CUSTOMER";
+            customer.PasswordSalt = "TEST CUSTOMER";
+
+            if (!(String.IsNullOrWhiteSpace(txtTitle.Text))) { customer.Title = txtTitle.Text; }
+            else { customer.Title = null; }
+            if (!(String.IsNullOrWhiteSpace(txtMiddleName.Text))) { customer.MiddleName = txtMiddleName.Text; }
+            else { customer.MiddleName = null; }
+            if (!(String.IsNullOrWhiteSpace(txtSuffix.Text))) { customer.Suffix = txtSuffix.Text; }
+            else { customer.Suffix = null; }
+            if (!(String.IsNullOrWhiteSpace(txtCompany.Text))) { customer.CompanyName = txtCompany.Text; }
+            else { customer.CompanyName = null; }
+            if (!(String.IsNullOrWhiteSpace(txtSalesPerson.Text))) { customer.SalesPerson = txtSalesPerson.Text; }
+            else { customer.SalesPerson = null; }
+            if (!(String.IsNullOrWhiteSpace(txtEmailAddress.Text))) { customer.EmailAddress = txtEmailAddress.Text; }
+            else { customer.EmailAddress = null; }
+            if (!(String.IsNullOrWhiteSpace(txtPhone.Text))) { customer.Phone = txtPhone.Text; }
+            else { customer.Phone = null; }
+
+            customerInfoUtil.UpdateCustomer(customer);
+
+            //if address above is not null, save any changes to the address fields to the database
+            if (!(address == null))
+            {
+                address.AddressLine1 = txtLine1.Text;
+                address.City = txtCity.Text;
+                address.StateProvince = txtStateProvince.Text;
+                address.CountryRegion = txtCountryRegion.Text;
+                address.PostalCode = txtPostalCode.Text;
+
+                if (!(String.IsNullOrWhiteSpace(txtLine2.Text))) { address.AddressLine2 = txtLine2.Text; }
+                else { address.AddressLine2 = null; }
+
+                customerInfoUtil.UpdateAddress(address);
+            }
 
         }
 
-        private void SetCustomer()
+        private void btnViewAddress_Click(object sender, EventArgs e)
         {
-            //create new customer object to pass to updatecCustomer() method
-            Customer customerToUpdate = new Customer();
-
-            //set properties of non-null values to to their corresponding text boxes
-            customerToUpdate.CustomerID = customerID;
-            customerToUpdate.FirstName = txtFirstName.Text;
-            customerToUpdate.LastName = txtLastName.Text;
-
-            //check for nulls in nullable text boxes and assign properties
-            if (!(string.IsNullOrWhiteSpace(txtTitle.Text)))
+            if (!(address == null))
             {
-                customerToUpdate.Title = txtTitle.Text;
-            }
-            else { customerToUpdate.Title = null; } //hanle null value (in this case Title)
+                ViewAddressForm viewAddressForm = new ViewAddressForm(customer.CustomerID);
+                DialogResult dr = viewAddressForm.ShowDialog();
 
-            if (!(string.IsNullOrWhiteSpace(txtMiddleName.Text)))
+            }
+            else
             {
-                customerToUpdate.MiddleName = txtMiddleName.Text;
+                MessageBox.Show("No address is tied to current customer");
             }
-            else { customerToUpdate.MiddleName = null; }
-
-            if (!(string.IsNullOrWhiteSpace(txtSuffix.Text)))
-            {
-                customerToUpdate.Suffix = txtSuffix.Text;
-            }
-            else { customerToUpdate.Suffix = null; }
-
-            if (!(string.IsNullOrWhiteSpace(txtCompany.Text)))
-            {
-                customerToUpdate.CompanyName = txtCompany.Text;
-            }
-            else { customerToUpdate.CompanyName = null; }
-
-            if (!(string.IsNullOrWhiteSpace(txtSalesPerson.Text)))
-            {
-                customerToUpdate.SalesPerson = txtSalesPerson.Text;
-            }
-            else { customerToUpdate.SalesPerson = null; }
-
-            if (!(string.IsNullOrWhiteSpace(txtEmailAddress.Text)))
-            {
-                customerToUpdate.EmailAddress = txtEmailAddress.Text;
-            }
-            else { customerToUpdate.EmailAddress = null; }
-
-            if (!(string.IsNullOrWhiteSpace(txtPhone.Text)))
-            {
-                customerToUpdate.Phone = txtPhone.Text;
-            }
-            else { customerToUpdate.Phone = null; }
-
-            //create customer utility
-            IGetCustomerInfo customerInfo = DependencyInjectorUtility.GetCustomerInfo();
-
-            //Update 
-            try
-            {
-                customerInfo.UpdateCustomer(customerToUpdate);
-            }
-
-            catch (Exception ex)
-            {
-                throw;
-                //MessageBox.Show(ex.Message);    
-            }
-
-            this.Close();
         }
-
-        //private void SetAddress()
-        //{
-        //    //create new customer object to pass to updatecCustomer() method
-        //    Address addressToUpdate = new Address();
-
-        //    //set properties of non-null values to to their corresponding text 
-        //    addressToUpdate.AddressLine1 = txtLine1.Text;
-        //    addressToUpdate.City = txtCity.Text;
-        //    addressToUpdate.StateProvince = txtStateProvince.Text;
-        //    addressToUpdate.CountryRegion = txtCountryRegion.Text;
-        //    addressToUpdate.PostalCode = txtPostalCode.Text;
-        //    addressToUpdate.AddressType = txtAddressType.Text;
-
-        //    //check for nulls in nullable text boxes and assign properties
-        //    if (!(string.IsNullOrWhiteSpace(txtTitle.Text)))
-        //    {
-        //        addressToUpdate.AddressLine2 = txtLine2.Text;
-        //    }
-        //    else { addressToUpdate.AddressLine2 = null; } //hanle null value (in this case Title)
-
-
-        //    //create customer utility
-        //    IGetCustomerInfo customerInfo = DependencyInjectorUtility.GetCustomerInfo();
-
-        //    //Update 
-        //    try
-        //    { 
-        //        customerInfo.UpdateAddress(addressToUpdate);
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //        //MessageBox.Show(ex.Message);    
-        //    }
-
-        //    this.Close();
-        //}
-        
     }
 }

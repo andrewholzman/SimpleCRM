@@ -163,6 +163,136 @@ namespace AdventureWorks.Business.Data
             return soDetailsToReturn;
         }
 
+        public int AddSalesOrderHeader(SalesOrderHeader soHeader)
+        {
+            //Declarations
+            int salesOrderIDToReturn = 0;
+            DateTime modifiedDate = DateTime.Now;
+
+            //SQL Command
+            SqlCommand cmd = GetDbCommand();
+            SqlCommand cmd2 = GetDbCommand();
+
+            cmd.CommandText = @"
+                INSERT INTO AdventureWorksLT2012.SalesLT.SalesOrderHeader
+                (RevisionNumber, OrderDate, DueDate, ShipDate, Status, OnlineOrderFlag, AccountNumber, PurchaseOrderNumber, CustomerID, ShipToAddressID, BillToAddressID, ShipMethod, CreditCardApprovalCode, SubTotal, TaxAmt, Freight, Comment, ModifiedDate)
+                Values
+                (@RevisionNumber, @OrderDate, @DueDate, @ShipDate, @Status, @OnlineOrderFlag, @AccountNumber, @PurchaseOrderNumber, @CustomerID, @ShipToAddressID, @BillToAddressID, @ShipMethod, @CreditCardApprovalCode, @SubTotal, @TaxAmt, @Freight, @Comment, @ModifiedDate);
+
+                SELECT @@Identity from AdventureWorksLT2012.SalesLT.SalesOrderHeader
+                ";
+
+            cmd.Parameters.AddWithValue("@RevisionNumber", soHeader.RevisionNumber);
+            cmd.Parameters.AddWithValue("@OrderDate", soHeader.OrderDate);
+            cmd.Parameters.AddWithValue("@DueDate", soHeader.DueDate);
+            cmd.Parameters.AddWithValue("@Status", soHeader.Status);
+            cmd.Parameters.AddWithValue("@OnlineOrderFlag", soHeader.OrderOnlineFlag);
+            cmd.Parameters.AddWithValue("@CustomerID", soHeader.CustomerID);
+            cmd.Parameters.AddWithValue("@ShipMethod", soHeader.ShipMethod);
+            cmd.Parameters.AddWithValue("@SubTotal", soHeader.SubTotal);
+            cmd.Parameters.AddWithValue("@TaxAmt", soHeader.TaxAmt);
+            cmd.Parameters.AddWithValue("@Freight", soHeader.Freight);
+            cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
+
+            //set parameters for nullable values
+            if (soHeader.ShipDate == null) { cmd.Parameters.AddWithValue("@ShipDate", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@ShipDate", soHeader.ShipDate); }
+            if (soHeader.AccountNumber == null) { cmd.Parameters.AddWithValue("@AccountNumber", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@AccountNumber", soHeader.AccountNumber); }
+            if (soHeader.PurchaseOrderNumber == null) { cmd.Parameters.AddWithValue("@PurchaseOrderNumber", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@PurchaseOrderNumber", soHeader.PurchaseOrderNumber); }
+            if (soHeader.ShipToAddressID == null) { cmd.Parameters.AddWithValue("@ShipToAddressID", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@ShipToAddressID", soHeader.ShipToAddressID); }
+            if (soHeader.BillToAddressID == null) { cmd.Parameters.AddWithValue("@BillToAddressID", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@BillToAddressID", soHeader.BillToAddressID); }
+            if (soHeader.CreditCardApprovalCode == null) { cmd.Parameters.AddWithValue("@CreditCardApprovalCode", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@CreditCardApprovalCode", soHeader.CreditCardApprovalCode); }
+            if (soHeader.Comment == null) { cmd.Parameters.AddWithValue("@Comment", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@Comment", soHeader.Comment); }
+
+            cmd2.CommandText = @" 
+                SELECT TOP 1 SalesOrderID 
+                FROM AdventureWorksLT2012.SalesLT.SalesOrderHeader
+                ORDER BY SalesOrderID DESC;
+                ";
+
+            //Execute Query
+            object objNewProductId;
+            try
+            {
+                cmd.Connection.Open();
+                objNewProductId = cmd.ExecuteScalar();
+                cmd.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            try
+            {
+                cmd2.Connection.Open();
+                SqlDataReader reader = cmd2.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+
+                if (reader.Read())
+                {
+                    salesOrderIDToReturn = (int)reader["SalesOrderID"]; //set properties of the new SalesOrdre based upon DB data
+                }
+                reader.Close();
+
+            }
+
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return salesOrderIDToReturn;
+        }
+
+        public void AddSalesOrderDetail(SalesOrderDetail soDetail)
+        {
+            //Declarations
+            DateTime modifiedDate = DateTime.Now;
+
+            //SQL Command
+            SqlCommand cmd = GetDbCommand();
+
+            cmd.CommandText = @"
+                INSERT INTO AdventureWorksLT2012.SalesLT.SalesOrderDetail
+                (SalesOrderID, OrderQty, ProductID, UnitPrice, UnitPriceDiscount, ModifiedDate)
+                Values
+                (@SalesOrderID, @OrderQty, @ProductID, @UnitPrice, @UnitPriceDiscount, @ModifiedDate);
+
+                SELECT @@Identity from AdventureWorksLT2012.SalesLT.SalesOrderDetail
+                ";
+
+            cmd.Parameters.AddWithValue("@SalesOrderID", soDetail.SalesOrderID);
+            cmd.Parameters.AddWithValue("@OrderQty", soDetail.OrderQty);
+            cmd.Parameters.AddWithValue("@ProductID", soDetail.ProductID);
+            cmd.Parameters.AddWithValue("@UnitPrice", soDetail.UnitPrice);
+            cmd.Parameters.AddWithValue("@UnitPriceDiscount", soDetail.UnitPriceDiscount);
+            cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
+
+
+
+            
+
+            //Execute Query
+            object objNewProductId;
+            try
+            {
+                cmd.Connection.Open();
+                objNewProductId = cmd.ExecuteScalar();
+                cmd.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+
 
         private SqlCommand GetDbCommand()
         {
@@ -235,5 +365,6 @@ namespace AdventureWorks.Business.Data
 
             return soDetailToReturn;
         }
+
     }
 }

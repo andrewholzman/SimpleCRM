@@ -17,6 +17,12 @@ namespace SimpleCRM.Forms
     {
 
         List<SalesOrderProductViewModel> productList = new List<SalesOrderProductViewModel>(); //create persistant list of ViewModel objects to display in the DGV
+        List<SalesOrderDetail> soDetailList = new List<SalesOrderDetail>();
+        Product soProduct = new Product();
+        SalesOrderDetail soDetailToAdd = new SalesOrderDetail();
+        SalesOrderProductViewModel soProductVM = null;
+        double TAX_RATE = 0.07; //unsure how AdventureWorks calculates tax rates, setting to 7% for Hamilton County
+
         public AddSalesOrderForm()
         {
             InitializeComponent();
@@ -26,15 +32,13 @@ namespace SimpleCRM.Forms
         {
 
         }
-
+         
         private void btnSave_Click(object sender, EventArgs e)
         {
             //create Model class objects and instances of Utility classes
             SalesOrderHeader soHeader = new SalesOrderHeader();
-            SalesOrderDetail soDetail = new SalesOrderDetail();
-            Product soProduct = new Product();
             Address soAddress = new Address();
-            //ProductViewModel soProductViewModel = null;
+            int salesOrderIDToEnter = 0;
 
             IGetCustomerInfo customerInfo = DependencyInjectorUtility.GetCustomerInfo();
             IGetProductInfo productInfo = DependencyInjectorUtility.GetProductInfo();
@@ -44,7 +48,7 @@ namespace SimpleCRM.Forms
             int customerIDAsInt;
 
             if (Int32.TryParse(txtCustomerID.Text, out customerIDAsInt)) { soHeader.CustomerID = customerIDAsInt; }
-            else { MessageBox.Show("Please enter a valid customer ID"); }
+            else { MessageBox.Show("Please enter a valid customer ID"); return; }
             if (chkOrderOnlineFlag.Checked) { soHeader.OrderOnlineFlag = true; }
             else { soHeader.OrderOnlineFlag = false; }
 
@@ -80,23 +84,54 @@ namespace SimpleCRM.Forms
                 soHeader.ShipToAddressID = null;
             }
             soHeader.ShipMethod = cbShipMethod.Text;
+            double FREIGHT_RATE = 0;
+            if (cbShipMethod.SelectedIndex == 0) //not sure how freight is calculated in adventureworks - could make this a switch/case statement if there were more than two options 
+            {
+                FREIGHT_RATE = 0.25; //if the first item is selected (AIR) set the rate at which freight is calculated to 0.25
+            } else
+            {
+                FREIGHT_RATE = 0.20; //set to 0.20 for CARGO 
+            }
 
             //Do work to calculate SubTotal, TaxAmt, TotalDue based upon entries in the dgvProductList
+            double subTotal = 0;
+            foreach (SalesOrderProductViewModel sopVM in productList) //add up linetotals and store in subtotal
+            {
+                subTotal = subTotal + (double)sopVM.LineTotal;
+            }
+            soHeader.SubTotal = (decimal)subTotal;
+            soHeader.TaxAmt = (decimal)(subTotal * TAX_RATE); //calculate tax
+            soHeader.Freight = (decimal)(subTotal * FREIGHT_RATE); //calculate freight
 
-            //set soHeader decimal values
 
             //Preform DB inserts for SalesOrderHeader and SalesOrderDetail
-            
+            salesOrderIDToEnter = salesOrderInfo.AddSalesOrderHeader(soHeader);
+            //foreach(SalesOrderDetail soDetail in soDetailList) //loop thru the list of products added and insert them into the SalesOrderDetail table
+            //{
+            //    this.soDetailToAdd.SalesOrderID = salesOrderIDToEnter;
+            //    salesOrderInfo.AddSalesOrderDetail(soDetail);
+            //}
+
+            for (int i = 0; i < soDetailList.Count; i++)
+            {
+                soDetailList[i].SalesOrderID = salesOrderIDToEnter;
+                salesOrderInfo.AddSalesOrderDetail(soDetailList[i]);
+            }
 
         }
 
         private void btnAddToOrder_Click(object sender, EventArgs e)
         {
-            Product soProduct = new Product();
-            SalesOrderDetail soDetailToAdd = new SalesOrderDetail();
-            SalesOrderProductViewModel soProductVM = null;
 
 
+            addProductToList();
+           
+
+
+        }
+
+        private void addProductToList()
+        {
             IGetProductInfo productInfo = DependencyInjectorUtility.GetProductInfo();
 
             //retrieve the product info fr the entered product ID
@@ -106,20 +141,21 @@ namespace SimpleCRM.Forms
                 soProduct = productInfo.GetProduct(productIDAsInt);
                 if (!(soProduct == null)) //ensure the entered product number is valid (actually tied to a product)
                 {
-                    
-                    soDetailToAdd.ProductID = productIDAsInt;
 
-                } else
+                    soDetailToAdd.ProductID = soProduct.ProductID;
+
+                }
+                else
                 {
                     MessageBox.Show("Please enter a valid product ID");
+                    return;
                 }
             }
             else { MessageBox.Show("Please enter a valid product ID"); }
 
-            soDetailToAdd.ProductID = soProduct.ProductID;
+            //soDetailToAdd.ProductID = soProduct.ProductID;
             soDetailToAdd.UnitPrice = soProduct.ListPrice;
-            soDetailToAdd.SalesOrderID = 00000;
-            soDetailToAdd.SalesOrderDetailID = 00000;
+
 
             decimal discountAmount;
             if (!decimal.TryParse(txtDiscount.Text, out discountAmount))
@@ -133,18 +169,18 @@ namespace SimpleCRM.Forms
 
             //UnitPrice * (1 - UnitPriceDiscount) * OrderQty - DB Calculation for LineTotal
             soDetailToAdd.LineTotal = (soDetailToAdd.UnitPrice * (1 - soDetailToAdd.UnitPriceDiscount) * soDetailToAdd.OrderQty);
+            soDetailList.Add(soDetailToAdd);
 
             //soProductVM = new SalesOrderProductViewModel(soDetailToAdd);
 
-            
-           soProductVM = new SalesOrderProductViewModel(soDetailToAdd);
-           productList.Add(soProductVM);
-                
-            
-            dgvProductList.DataSource = null;
+
+            soProductVM = new SalesOrderProductViewModel(soDetailToAdd);
+            productList.Add(soProductVM);
+
+
+
+            //dgvProductList.DataSource = null;
             dgvProductList.DataSource = productList;
-
-
         }
 
 
