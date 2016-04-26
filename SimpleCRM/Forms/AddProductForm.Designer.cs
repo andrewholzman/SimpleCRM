@@ -53,11 +53,11 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.picBoxProduct = new System.Windows.Forms.PictureBox();
-            this.txtProductNumber = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.openImageDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbUploadImage = new System.Windows.Forms.CheckBox();
+            this.txtProductNumber = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxProduct)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -269,6 +269,7 @@
             this.btnCancel.TabIndex = 34;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // picBoxProduct
             // 
@@ -278,23 +279,6 @@
             this.picBoxProduct.Size = new System.Drawing.Size(179, 99);
             this.picBoxProduct.TabIndex = 43;
             this.picBoxProduct.TabStop = false;
-            // 
-            // txtProductNumber
-            // 
-            this.txtProductNumber.Location = new System.Drawing.Point(420, 6);
-            this.txtProductNumber.Name = "txtProductNumber";
-            this.txtProductNumber.Size = new System.Drawing.Size(107, 20);
-            this.txtProductNumber.TabIndex = 21;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(232, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 18);
-            this.label3.TabIndex = 46;
-            this.label3.Text = "Product Number:";
             // 
             // groupBox1
             // 
@@ -314,6 +298,23 @@
             this.cbUploadImage.TabIndex = 0;
             this.cbUploadImage.Text = "Upload Image";
             this.cbUploadImage.UseVisualStyleBackColor = true;
+            // 
+            // txtProductNumber
+            // 
+            this.txtProductNumber.Location = new System.Drawing.Point(420, 6);
+            this.txtProductNumber.Name = "txtProductNumber";
+            this.txtProductNumber.Size = new System.Drawing.Size(107, 20);
+            this.txtProductNumber.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(232, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(121, 18);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "Product Number:";
             // 
             // AddProductForm
             // 
@@ -386,10 +387,10 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.PictureBox picBoxProduct;
-        private System.Windows.Forms.TextBox txtProductNumber;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.OpenFileDialog openImageDialog;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox cbUploadImage;
+        private System.Windows.Forms.TextBox txtProductNumber;
+        private System.Windows.Forms.Label label3;
     }
 }

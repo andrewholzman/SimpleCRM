@@ -106,11 +106,7 @@ namespace SimpleCRM.Forms
 
             //Preform DB inserts for SalesOrderHeader and SalesOrderDetail
             salesOrderIDToEnter = salesOrderInfo.AddSalesOrderHeader(soHeader);
-            //foreach(SalesOrderDetail soDetail in soDetailList) //loop thru the list of products added and insert them into the SalesOrderDetail table
-            //{
-            //    this.soDetailToAdd.SalesOrderID = salesOrderIDToEnter;
-            //    salesOrderInfo.AddSalesOrderDetail(soDetail);
-            //}
+
 
             for (int i = 0; i < soDetailList.Count; i++)
             {
@@ -118,6 +114,7 @@ namespace SimpleCRM.Forms
                 salesOrderInfo.AddSalesOrderDetail(soDetailList[i]);
             }
 
+            this.Close();
         }
 
         private void btnAddToOrder_Click(object sender, EventArgs e)
@@ -171,7 +168,7 @@ namespace SimpleCRM.Forms
             soDetailToAdd.LineTotal = (soDetailToAdd.UnitPrice * (1 - soDetailToAdd.UnitPriceDiscount) * soDetailToAdd.OrderQty);
             soDetailList.Add(soDetailToAdd);
 
-            //soProductVM = new SalesOrderProductViewModel(soDetailToAdd);
+            soProductVM = new SalesOrderProductViewModel(soDetailToAdd);
 
 
             soProductVM = new SalesOrderProductViewModel(soDetailToAdd);
@@ -179,7 +176,7 @@ namespace SimpleCRM.Forms
 
 
 
-            //dgvProductList.DataSource = null;
+            dgvProductList.DataSource = null;
             dgvProductList.DataSource = productList;
         }
 

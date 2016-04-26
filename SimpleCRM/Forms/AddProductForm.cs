@@ -205,5 +205,10 @@ namespace SimpleCRM.Forms
             Stream picStream = new MemoryStream(pictureBuffer);
             picBoxProduct.Image = new Bitmap(picStream);
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
