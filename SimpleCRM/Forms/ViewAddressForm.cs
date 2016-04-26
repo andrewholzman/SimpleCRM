@@ -52,6 +52,10 @@ namespace SimpleCRM.Forms
 
             string mapString = " http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/"+ lat +"," + lon + "/15?mapSize=610,287&pp=" + lat + "," + lon + ";&key=" + BingMapsKey; //create the static map request using the lat and lon values retreived above
             wbMapView.Navigate(mapString);
+            lblLat.Text = "Latitude: " + lat;
+            lblLon.Text = "Longitude: " + lon;
+
+
 
         }
 
@@ -81,7 +85,11 @@ namespace SimpleCRM.Forms
             return (xmlDoc);
 
         }
-        
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
     public static class XmlExtensions //created to retrieve the latitude and longitude values from the XML Bing-API response
     {
